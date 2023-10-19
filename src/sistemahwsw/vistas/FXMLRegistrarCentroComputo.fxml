@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.vistas.FXMLRegistrarEquipoComputoController">
+   <children>
+      <Pane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label layoutX="144.0" layoutY="14.0" text="Sistema de inventario para el Hardware/Software">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Separator layoutX="-2.0" layoutY="41.0" prefHeight="0.0" prefWidth="600.0" />
+            <Label layoutX="31.0" layoutY="67.0" text="Centro de cómputo">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button layoutX="423.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
+            <Label layoutX="31.0" layoutY="114.0" text="Listado de equipos que están en el Centro de Cómputo 1" />
+            <TableView layoutX="31.0" layoutY="140.0" prefHeight="200.0" prefWidth="534.0" stylesheets="@../estilos/estilos.css">
+              <columns>
+                <TableColumn prefWidth="104.00006675720215" text="foto" />
+                <TableColumn prefWidth="46.39990234375" text="ID" />
+                  <TableColumn prefWidth="208.00006103515625" text="Nombre" />
+                  <TableColumn prefWidth="175.19998168945312" text="Opciones" />
+              </columns>
+            </TableView>
+            <Button layoutX="469.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Regresar" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

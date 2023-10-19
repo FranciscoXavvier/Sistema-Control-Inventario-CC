@@ -1,0 +1,28 @@
+.boton_registrar{
+    -fx-background-color: #33CC00;
+}
+
+.boton_registrar:hover{
+    -fx-background-color:#003300;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler{
+    -fx-background-color: #00519E;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+}
+
+.boton_regresar{
+    -fx-background-color: #666666;
+    -fx-text-fill: white;
+}
+
+.boton_regresar:hover{
+    -fx-background-color:bSlack;
+    -fx-text-fill: white;
+}

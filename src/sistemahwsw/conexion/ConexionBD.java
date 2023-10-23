@@ -13,6 +13,8 @@ import java.sql.SQLException;
  * @author super
  */
 public class ConexionBD {
+    
+    private static Connection conexionBD = null;
         
     private static String driver = "com.mysql.jdbc.Driver";
     
@@ -30,15 +32,14 @@ public class ConexionBD {
     private static ConexionBD instanciaDeConexion = new ConexionBD();
     
     private ConexionBD (){
-        
     }
     
-    public static ConexionBD getConexionBD (){
+    public static ConexionBD getInstancia (){
         return instanciaDeConexion;
     }
     
     public static Connection abrirConexionBD(){
-        Connection conexionBD = null;
+        conexionBD = null;
         try {
             Class.forName(driver);
             conexionBD = DriverManager.getConnection(urlConexion, usuario, password);
@@ -48,5 +49,13 @@ public class ConexionBD {
             ex.printStackTrace();
         }
         return conexionBD;
+    }
+    
+    public static void cerrarConexion(){
+        try{
+            conexionBD.close();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

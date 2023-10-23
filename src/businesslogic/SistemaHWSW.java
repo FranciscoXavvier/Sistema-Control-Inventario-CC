@@ -19,7 +19,7 @@ public class SistemaHWSW extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/sistemahwsw/vistas/FXMLDocument.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistemahwsw/vistas/FXMLLogin.fxml"));
         
         Scene scene = new Scene(root);
         

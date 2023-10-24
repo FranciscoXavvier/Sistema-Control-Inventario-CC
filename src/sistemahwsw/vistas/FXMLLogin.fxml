@@ -12,18 +12,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.LoginController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="429.0" prefWidth="692.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.LoginController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="682.0">
          <children>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="434.0" prefWidth="682.0">
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="682.0">
                <children>
+                  <Pane prefHeight="429.0" prefWidth="302.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css" />
                   <ImageView fitHeight="460.0" fitWidth="302.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/uv.png" />
+                        <Image url="@../img/uvlogo.jpeg" />
                      </image>
                   </ImageView>
-                  <Separator layoutX="313.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="434.0" prefWidth="4.0" />
+                  <Separator layoutX="299.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="429.0" prefWidth="5.0" />
                   <Label layoutX="328.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" text="Sistema de Control de Hardware y Software">
                      <font>
                         <Font name="System Bold" size="16.0" />
@@ -40,7 +41,7 @@
                   <Button fx:id="boton_salir" layoutX="548.0" layoutY="378.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#salir" prefHeight="25.0" prefWidth="106.0" styleClass="boton_cancelar" stylesheets="@../estilos/estilos.css" text="Salir" />
                   <Button fx:id="boton_iniciar_sesion" layoutX="428.0" layoutY="378.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#iniciarSesion" prefHeight="25.0" prefWidth="106.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Iniciar Sesión" />
                   <PasswordField fx:id="tf_password" layoutX="327.0" layoutY="227.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="328.0" />
-                  <Button layoutX="465.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" styleClass="boton_crearUsuario" stylesheets="@../estilos/estilos.css" text="¿No tienes un usuario? Crea uno." />
+                  <Button fx:id="boton_registrar_tecnico" layoutX="465.0" layoutY="270.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registrar" styleClass="boton_crearUsuario" stylesheets="@../estilos/estilos.css" text="¿No tienes un usuario? Crea uno." />
                </children>
             </Pane>
          </children>

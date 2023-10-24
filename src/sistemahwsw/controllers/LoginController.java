@@ -14,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,6 +34,7 @@ public class LoginController implements Initializable {
      * Initializes the controller class.
      */
    @FXML private javafx.scene.control.Button boton_salir;
+    @FXML private javafx.scene.control.Button boton_registrar_tecnico;
     
     @FXML
     private TextField tf_usuario;
@@ -49,8 +52,6 @@ public class LoginController implements Initializable {
     }    
     
     public void iniciarSesion(ActionEvent event) throws Exception {               
-        
-       
         String username = tf_usuario.getText();
         String password = tf_password.getText();
 
@@ -75,6 +76,11 @@ public class LoginController implements Initializable {
             System.out.println("Inicio de sesión exitoso");
         } else {
             // Las credenciales son inválidas
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Campos vacíos");
+            alert.setHeaderText("Campos inválidos o vacíos.");
+            alert.setContentText("Asegurate de que ingreses la información que se necesita.");
+            alert.showAndWait();
             System.out.println("Inicio de sesión fallido");
         }
         
@@ -83,6 +89,22 @@ public class LoginController implements Initializable {
         //SI CREDENCIALES SON CORRECTAS
        
     }   
+    
+    public void registrar(ActionEvent event) throws Exception{
+        try{
+            Stage stageLogin = (Stage) boton_registrar_tecnico.getScene().getWindow();
+ 
+           
+
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarTecnico.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));  
+                stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     
     public void salir(ActionEvent event) throws Exception {               
     try {

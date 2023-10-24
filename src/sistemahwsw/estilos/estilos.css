@@ -54,3 +54,7 @@
 .pane{
      -fx-background-color: blue;
 }
+
+.pane_login{
+    -fx-background-color: #0453a2 ;
+}

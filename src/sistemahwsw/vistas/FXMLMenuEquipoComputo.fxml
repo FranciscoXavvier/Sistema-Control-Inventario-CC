@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLMenuEquipoComputoController">
+   <children>
+      <Separator layoutX="1.0" layoutY="50.0" prefHeight="0.0" prefWidth="600.0" />
+      <Label layoutX="148.0" layoutY="18.0" text="Sistema de inventario para el Hardware/Software">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="41.0" layoutY="77.0" text="Equipos de cómputo">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="429.0" layoutY="80.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
+      <Label layoutX="32.0" layoutY="114.0" text="Listado de Equipos de Cómputo" />
+      <TableView layoutX="34.0" layoutY="131.0" prefHeight="200.0" prefWidth="534.0" stylesheets="@../estilos/estilos.css">
+         <columns>
+            <TableColumn prefWidth="104.00006675720215" text="foto" />
+            <TableColumn prefWidth="46.39990234375" text="ID" />
+            <TableColumn prefWidth="208.00006103515625" text="Nombre" />
+            <TableColumn prefWidth="175.19998168945312" text="Opciones" />
+         </columns>
+      </TableView>
+      <Button layoutX="474.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" styleClass="boton_regresar" stylesheets="@../estilos/estilos.css" text="Regresar" />
+   </children>
+</AnchorPane>

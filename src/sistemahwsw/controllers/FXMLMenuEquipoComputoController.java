@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package sistemahwsw.controllers;
 
@@ -12,9 +11,9 @@ import javafx.fxml.Initializable;
 /**
  * FXML Controller class
  *
- * @author HP
+ * @author ABF26
  */
-public class RegistrarCentroComputoController implements Initializable {
+public class FXMLMenuEquipoComputoController implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -23,7 +22,5 @@ public class RegistrarCentroComputoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    
     
 }

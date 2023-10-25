@@ -12,6 +12,7 @@
          <children>
             <Button fx:id="boton_usuario" layoutX="28.0" layoutY="41.0" mnemonicParsing="false" onAction="#usuario" text="Button" />
             <Button layoutX="390.0" layoutY="374.0" mnemonicParsing="false" onAction="#salir" prefHeight="26.0" prefWidth="91.0" text="Salir" />
+            <Label fx:id="bienvenido" layoutX="384.0" layoutY="45.0" text="Bienvenido " />
          </children></Pane>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
       <Pane layoutY="-5.0" prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css" />

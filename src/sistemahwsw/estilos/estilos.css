@@ -58,3 +58,13 @@
 .pane_login{
     -fx-background-color: #0453a2 ;
 }
+
+.boton_editar{
+    -fx-background-color: #cc6d00;
+    -fx-text-fill: white;
+}
+
+.boton_editar:hover{
+    -fx-background-color:#003300;
+    -fx-text-fill: white;
+}

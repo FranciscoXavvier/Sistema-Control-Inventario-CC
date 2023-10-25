@@ -33,7 +33,7 @@ public class LoginController implements Initializable {
     /**
      * Initializes the controller class.
      */
-   @FXML private javafx.scene.control.Button boton_salir;
+    @FXML private javafx.scene.control.Button boton_salir;
     @FXML private javafx.scene.control.Button boton_registrar_tecnico;
     
     @FXML
@@ -94,8 +94,6 @@ public class LoginController implements Initializable {
         try{
             Stage stageLogin = (Stage) boton_registrar_tecnico.getScene().getWindow();
  
-           
-
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarTecnico.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
@@ -107,14 +105,14 @@ public class LoginController implements Initializable {
     }
     
     public void salir(ActionEvent event) throws Exception {               
-    try {
-         Stage stage = (Stage) boton_salir.getScene().getWindow();
-        
-        stage.close();
-        
-    } catch(Exception e) {
-        e.printStackTrace();
-    }
+        try {
+             Stage stage = (Stage) boton_salir.getScene().getWindow();
+
+            stage.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     
     }
 

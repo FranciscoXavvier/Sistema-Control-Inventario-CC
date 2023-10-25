@@ -8,10 +8,13 @@
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.MenuPrincipalController">
     <children>
-      <Pane layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0" />
+      <Pane layoutY="4.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0">
+         <children>
+            <Button fx:id="boton_usuario" layoutX="28.0" layoutY="41.0" mnemonicParsing="false" onAction="#usuario" text="Button" />
+         </children></Pane>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Pane layoutY="-5.0" prefHeight="42.0" prefWidth="530.0" styleClass="pane" stylesheets="@../estilos/estilos.css" />
-      <Label layoutX="114.0" layoutY="14.0" text="Sistema de inventario para el Hardware/Software" textAlignment="CENTER">
+      <Pane layoutY="-5.0" prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css" />
+      <Label layoutX="114.0" layoutY="10.0" text="Sistema de inventario para el Hardware/Software" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -21,13 +24,13 @@
             <Font name="System Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="13.0" layoutY="86.0" text="Selecciona el tipo de inventario a  registrar" />
+      <Label layoutX="13.0" layoutY="86.0" text="Selecciona una opción." />
       <Button id="boton_cc" fx:id="boton_cc" layoutX="67.0" layoutY="120.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="186.0" text="boton_cc" />
       <Button id="boton_equipoComputo" layoutX="293.0" layoutY="120.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="186.0" text="Button" />
       <Button id="boton_bitacora" layoutX="66.0" layoutY="246.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="186.0" text="Button" />
       <Button id="boton_programas" layoutX="293.0" layoutY="246.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="186.0" text="Button" />
       <Label layoutX="68.0" layoutY="213.0" text="Centro de cómputo" />
-      <Button layoutX="414.0" layoutY="381.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Regresar" />
+      <Button layoutX="414.0" layoutY="381.0" mnemonicParsing="false" onAction="#salir" prefHeight="26.0" prefWidth="70.0" text="Regresar" />
       <Label layoutX="295.0" layoutY="213.0" text="Equipo de cómputo" />
       <Label layoutX="68.0" layoutY="340.0" text="Bitácoras" />
       <Label layoutX="294.0" layoutY="340.0" text="Programas" />

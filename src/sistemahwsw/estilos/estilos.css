@@ -26,3 +26,35 @@
     -fx-background-color:bSlack;
     -fx-text-fill: white;
 }
+
+.boton_cancelar{
+    -fx-background-color: #cc0000;
+    -fx-text-fill: white;
+}
+
+.boton_cancelar:hover{
+    -fx-background-color:#003300;
+    -fx-text-fill: white;
+}
+
+.boton_crearUsuario{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-text-fill: blue;
+    -fx-text-decoration: overline;
+}
+
+.boton_crearUsuario:pressed {
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+
+.pane{
+     -fx-background-color: blue;
+}
+
+.pane_login{
+    -fx-background-color: #0453a2 ;
+}

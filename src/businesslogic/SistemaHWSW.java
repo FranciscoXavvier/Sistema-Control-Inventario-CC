@@ -5,14 +5,11 @@
  */
 package businesslogic;
 
-import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sistemahwsw.dao.AplicacionDAO;
-import sistemahwsw.pojo.Aplicacion;
 
 /**
  *
@@ -22,12 +19,7 @@ public class SistemaHWSW extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        ArrayList<Aplicacion> aplicaciones = AplicacionDAO.obtenerAplicaciones();
-        for (Aplicacion app : aplicaciones){
-            System.out.println(app.getNombre());
-        }
-        
-        Parent root = FXMLLoader.load(getClass().getResource("/sistemahwsw/vistas/FXMLmenuPrincipal.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/sistemahwsw/vistas/FXMLLogin.fxml"));
         
         Scene scene = new Scene(root);
         

@@ -60,6 +60,23 @@ public class LoginController implements Initializable {
 
         if (tecnico != null && tecnico.getPassword().equals(password))
         {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLmenuPrincipal.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            MenuPrincipalController controlador = (MenuPrincipalController) fxmlLoader.getController();
+            controlador.parametros(username, this);
+            stage.showAndWait();
+
+            //Como decía E.Betanzos, el programa llegará a este punto una vez la ventana
+            //"hija" se cierre.            
+            //PoblarFormulario se encarga de coger los valores de la lista manipulada y
+            //rellenar el listView correspondiente
+            
+            
             Utilidades.cambiarVentana("Menú principal", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLmenuPrincipal.fxml");
             System.out.println("Inicio de sesión exitoso");
         } else {

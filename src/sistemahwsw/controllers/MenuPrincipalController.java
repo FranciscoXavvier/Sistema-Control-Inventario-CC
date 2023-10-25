@@ -32,29 +32,48 @@ public class MenuPrincipalController implements Initializable {
     
     private javafx.scene.control.Button boton_usuario;
     private Label label;
+    private LoginController milc;
+    private String miUsername;
     
     @FXML
     private Button boton_cc;
     
-    @Override
+     @FXML
+    private Label lbl_bienvenido;
+        
+    
+    public void parametros(String username, LoginController lc){
+        milc = lc;
+        miUsername = username;
+        lbl_bienvenido.setText("Bienvenido "+miUsername+"!");
+    }
+    
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
     }    
     
     public void usuario(ActionEvent event){
         try{
-                Stage stageConsultar = (Stage) boton_usuario.getScene().getWindow();
- 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLConsultarTecnico.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));  
-                stage.show();
+             FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLConsultarTecnico.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            ConsultarTecnicoController controlador = (ConsultarTecnicoController) fxmlLoader.getController();
+            controlador.parametros(miUsername, this);
+            stage.showAndWait();
+            
+            Utilidades.cambiarVentana("Aplicaciones", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLConsultarTecnico.fxml");
         }catch(Exception e){
             e.printStackTrace();
         }
+       
     }
-    
 
+    
     @FXML
     private void ClicProgramas(ActionEvent event) {
         Utilidades.cambiarVentana("Aplicaciones", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLAplicaciones.fxml");

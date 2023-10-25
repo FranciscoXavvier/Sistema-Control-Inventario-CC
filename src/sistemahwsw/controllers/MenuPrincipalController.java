@@ -28,18 +28,6 @@ public class MenuPrincipalController implements Initializable {
         
     
     @FXML private javafx.scene.control.Button boton_cc;
-    @FXML
-    private Label label;
-    
-    @FXML
-    private Label bienvenido;
-    
- 
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,6 +47,7 @@ public class MenuPrincipalController implements Initializable {
         }
     }
     
+    @FXML
     public void centro_computo(ActionEvent event){
         try{
                 Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
@@ -73,6 +62,7 @@ public class MenuPrincipalController implements Initializable {
         }
     }
     
+    
     public void salir(ActionEvent event){
         try {
             Stage stage = (Stage) boton_cc.getScene().getWindow();
@@ -82,6 +72,21 @@ public class MenuPrincipalController implements Initializable {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void clicIrEquipoComputo(ActionEvent event) {
+        try{
+            Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLMenuEquipoComputo.fxml"));
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
 
 }

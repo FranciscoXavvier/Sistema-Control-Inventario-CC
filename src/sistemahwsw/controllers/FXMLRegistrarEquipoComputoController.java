@@ -1,71 +1,80 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package sistemahwsw.controllers;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import modelo.dao.CentroComputoDAO;
-import sistemahwsw.conexion.ConexionBD;
-import sistemahwsw.pojo.CentroComputo;
+import sistemahwsw.pojo.EquipoComputo;
 
 /**
  * FXML Controller class
  *
- * @author HP
+ * @author ABF26
  */
 public class FXMLRegistrarEquipoComputoController implements Initializable {
+
+    @FXML
+    private TextField tf_procesador;
+    @FXML
+    private TextField tf_tarjetaMadre;
+    @FXML
+    private TextField tf_memoriaRam;
+    @FXML
+    private TextField tf_almacenamiento;
+    @FXML
+    private TextField tf_lectorOptico;
+    @FXML
+    private TextField tf_codigoBarras;
+    @FXML
+    private TextField tf_fila;
+    @FXML
+    private TextField tf_columna;
 
     /**
      * Initializes the controller class.
      */
-    
-    @FXML
-    private TextField tf_centro_computo;
-    
-    private CentroComputo centroComputoDAO;
-    private ConexionBD connection = ConexionBD.getInstancia(); // Conexión a la base de datos
-
-    public FXMLRegistrarEquipoComputoController() {
-        Connection conexion = connection.abrirConexionBD();
-    }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
-    public void registrar(ActionEvent event) throws Exception {               
-        
-        String nombre=tf_centro_computo.getText();
 
-        
-        CentroComputo centroComputo = new CentroComputo();
-        centroComputo.setNombreCentroComputo(nombre);
-        centroComputo.setIdTecnico(1);
-        CentroComputoDAO.registrar(1,centroComputo);
+    @FXML
+    private void clicCancelar(ActionEvent event) {
+    }
 
-        // Las credenciales son inválidas
+    @FXML
+    private void clicRegistrar(ActionEvent event) {
+        String procesador = tf_procesador.getText();
+        String tarjeta_madre = tf_tarjetaMadre.getText();
+        String memoria_ram = tf_memoriaRam.getText();
+        String almacenamiento = tf_almacenamiento.getText();
+        String lector_optico = tf_lectorOptico.getText();
+        String codigo_de_barras = tf_codigoBarras.getText();
+        String fila = tf_fila.getText();
+        String columna = tf_columna.getText();
+        
+        EquipoComputo equipoComputo = new EquipoComputo();
+        equipoComputo.setProcesador(procesador);
+        equipoComputo.setTarjetaMadre(tarjeta_madre);
+        equipoComputo.setMemoriaRam(memoria_ram);
+        equipoComputo.setAlmacenamiento(almacenamiento);
+        equipoComputo.setLectorOptico(lector_optico);
+        equipoComputo.setCodigoDeBarras(codigo_de_barras);
+        equipoComputo.setFila(fila);
+        equipoComputo.setColumna(columna);
+        
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Registro exitoso");
-            alert.setHeaderText("Técnico registrado correctamente.");
-            alert.setContentText("La información se ha registrado correctamente y ahora puedes hacer uso de tu usuario.");
+            alert.setHeaderText("Equipo de cómputo registrado correctamente.");
+            alert.setContentText("La información se ha registrado correctamente.");
             alert.showAndWait();
-            System.out.println("Inicio de sesión fallido");
-        
-        
-        
-        //SI CREDENCIALES SON CORRECTAS
-       
-    }   
-   
+    }
     
 }

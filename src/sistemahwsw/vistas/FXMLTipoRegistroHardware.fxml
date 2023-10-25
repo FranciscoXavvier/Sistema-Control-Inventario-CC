@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLTipoRegistroHardwareController">
+   <children>
+      <Pane prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css">
+         <children>
+            <Label layoutX="128.0" layoutY="12.0" text="Sistema de inventario para el Hardware/Software" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="177.0" layoutY="42.0" text="Tipo de registro de Hardware">
+         <font>
+            <Font name="System Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="62.0" text="Selecciona el tipo de hardware a registrar" />
+      <Button id="boton_equipoComputo" layoutX="14.0" layoutY="155.0" mnemonicParsing="false" onAction="#clicEquipoComputo" prefHeight="90.0" prefWidth="186.0">
+         <graphic>
+            <ImageView fitHeight="80.0" fitWidth="80.0">
+               <image>
+                  <Image url="@../img/Computadora.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="14.0" layoutY="245.0" text="Equipo de cómputo" />
+      <Button id="boton_cc" fx:id="boton_cc" layoutX="330.0" layoutY="155.0" mnemonicParsing="false" onAction="#centro_computo" prefHeight="90.0" prefWidth="186.0">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="65.0">
+               <image>
+                  <Image url="@../img/cc.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="330.0" layoutY="245.0" text="Periférico" />
+      <Button layoutX="446.0" layoutY="352.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Regresar" />
+   </children>
+</AnchorPane>

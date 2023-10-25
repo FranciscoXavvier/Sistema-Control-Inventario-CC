@@ -81,10 +81,6 @@ public class RegistrarTecnicoController implements Initializable {
             alert.setContentText("La información se ha registrado correctamente y ahora puedes hacer uso de tu usuario.");
             alert.showAndWait();
             System.out.println("Inicio de sesión fallido");
-        
-        
-        
-        //SI CREDENCIALES SON CORRECTAS
        
     }   
     

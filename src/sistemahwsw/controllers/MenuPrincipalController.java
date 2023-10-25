@@ -64,5 +64,34 @@ public class MenuPrincipalController implements Initializable {
     private void clicRegresar(ActionEvent event) {
         Utilidades.cambiarVentana("Inicio de sesión", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLLogin.fxml");
     }
-
+    @FXML
+    public void centro_computo(ActionEvent event){
+        try{
+                Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
+ 
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLMenuCentroComputo.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));  
+                stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+      
+    @FXML
+    private void clicIrEquipoComputo(ActionEvent event) {
+        try{
+            Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLMenuEquipoComputo.fxml"));
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
 }
+       

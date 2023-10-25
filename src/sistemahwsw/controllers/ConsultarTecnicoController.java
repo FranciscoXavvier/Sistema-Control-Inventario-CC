@@ -27,7 +27,6 @@ public class ConsultarTecnicoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    @FXML
     public void salir(ActionEvent event){
         try {
             Stage stage = (Stage) boton_salir.getScene().getWindow();

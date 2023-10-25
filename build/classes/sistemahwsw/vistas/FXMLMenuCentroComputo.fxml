@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.RegistrarCentroComputoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.MenuCentroComputoController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0" stylesheets="@../estilos/estilos.css">
          <children>
@@ -24,7 +24,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="423.0" layoutY="70.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
+            <Button fx:id="boton_registrar" layoutX="423.0" layoutY="70.0" mnemonicParsing="false" onAction="#registrar" prefHeight="25.0" prefWidth="142.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
             <Label layoutX="31.0" layoutY="114.0" text="Listado de equipos que están en el Centro de Cómputo 1" />
             <TableView layoutX="31.0" layoutY="140.0" prefHeight="200.0" prefWidth="534.0" stylesheets="@../estilos/estilos.css">
               <columns>

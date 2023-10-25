@@ -10,6 +10,7 @@
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.MenuPrincipalController">
     <children>
+
       <Pane layoutY="-5.0" prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css" />
       <Label layoutX="114.0" layoutY="14.0" text="Sistema de inventario para el Hardware/Software" textAlignment="CENTER" textFill="WHITE">
          <font>

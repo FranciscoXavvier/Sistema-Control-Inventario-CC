@@ -7,6 +7,7 @@
 package sistemahwsw.controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,18 +17,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import sistemahwsw.pojo.CentroComputo;
+import sistemahwsw.pojo.Tecnico;
 
 /**
  *
  * @author HP
  */
 public class MenuPrincipalController implements Initializable {
-    
+        
     
     @FXML private javafx.scene.control.Button boton_usuario;
     @FXML
     private Label label;
     
+    @FXML
+    private Label bienvenido;
+    
+ 
     @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
@@ -36,7 +43,6 @@ public class MenuPrincipalController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
     
     public void usuario(ActionEvent event){
@@ -63,5 +69,5 @@ public class MenuPrincipalController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
 }

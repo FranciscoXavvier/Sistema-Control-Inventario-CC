@@ -74,7 +74,13 @@ public class RegistrarTecnicoController implements Initializable {
         tecnico.setPassword(password);
         TecnicoDAO.registrar(tecnico);
 
-        
+        // Las credenciales son inválidas
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Registro exitoso");
+            alert.setHeaderText("Técnico registrado correctamente.");
+            alert.setContentText("La información se ha registrado correctamente y ahora puedes hacer uso de tu usuario.");
+            alert.showAndWait();
+            System.out.println("Inicio de sesión fallido");
         
         
         

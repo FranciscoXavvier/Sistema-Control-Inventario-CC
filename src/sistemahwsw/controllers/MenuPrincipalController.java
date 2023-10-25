@@ -27,7 +27,7 @@ import sistemahwsw.pojo.Tecnico;
 public class MenuPrincipalController implements Initializable {
         
     
-    @FXML private javafx.scene.control.Button boton_usuario;
+    @FXML private javafx.scene.control.Button boton_cc;
     @FXML
     private Label label;
     
@@ -47,7 +47,7 @@ public class MenuPrincipalController implements Initializable {
     
     public void usuario(ActionEvent event){
         try{
-                Stage stageConsultar = (Stage) boton_usuario.getScene().getWindow();
+                Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
  
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLConsultarTecnico.fxml"));
                 Parent root1 = (Parent) fxmlLoader.load();
@@ -59,9 +59,23 @@ public class MenuPrincipalController implements Initializable {
         }
     }
     
+    public void centro_computo(ActionEvent event){
+        try{
+                Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
+ 
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLMenuCentroComputo.fxml"));
+                Parent root1 = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));  
+                stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     public void salir(ActionEvent event){
         try {
-            Stage stage = (Stage) boton_usuario.getScene().getWindow();
+            Stage stage = (Stage) boton_cc.getScene().getWindow();
 
             stage.close();
 

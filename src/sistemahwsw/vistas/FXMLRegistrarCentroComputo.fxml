@@ -20,7 +20,7 @@
                </font>
             </Label>
             <Separator layoutX="-2.0" layoutY="41.0" prefHeight="0.0" prefWidth="600.0" />
-            <Button layoutX="289.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
+            <Button layoutX="289.0" layoutY="340.0" mnemonicParsing="false" onAction="#registrar" prefHeight="25.0" prefWidth="130.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
             <Button fx:id="boton_cancelar" layoutX="433.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="boton_cancelar" stylesheets="@../estilos/estilos.css" text="Cancelar" />
             <Label layoutX="23.0" layoutY="79.0" text="Rellena la información con los campos requeridos.">
                <font>
@@ -33,7 +33,7 @@
                </font>
             </Label>
             <Label layoutX="23.0" layoutY="142.0" text="Nombre del centro de cómputo" />
-            <TextField layoutX="18.0" layoutY="175.0" prefHeight="25.0" prefWidth="366.0" />
+            <TextField fx:id="tf_centro_computo" layoutX="18.0" layoutY="175.0" prefHeight="25.0" prefWidth="366.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="413.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/cc.png" />

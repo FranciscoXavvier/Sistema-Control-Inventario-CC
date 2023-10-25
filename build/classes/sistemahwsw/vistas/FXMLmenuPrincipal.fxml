@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.MenuPrincipalController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.MenuPrincipalController">
     <children>
 
       <Pane layoutY="-5.0" prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css" />
@@ -23,7 +23,7 @@
          </font>
       </Label>
       <Label layoutX="13.0" layoutY="86.0" text="Selecciona el tipo de inventario a registrar" />
-      <Button id="boton_cc" fx:id="boton_cc" layoutX="67.0" layoutY="120.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="186.0">
+      <Button id="boton_cc" fx:id="boton_cc" layoutX="67.0" layoutY="120.0" mnemonicParsing="false" onAction="#centro_computo" prefHeight="90.0" prefWidth="186.0">
          <graphic>
             <ImageView fitHeight="65.0" fitWidth="65.0">
                <image>

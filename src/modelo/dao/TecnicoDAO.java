@@ -17,27 +17,21 @@ import sistemahwsw.pojo.Tecnico;
  * @author HP
  */
 public class TecnicoDAO {
-    private static ConexionBD conexionBD= ConexionBD.getInstancia();
-    
+    private static ConexionBD conexionBD= ConexionBD.getInstancia(); 
 
     public static Tecnico registrar(Tecnico tecnico){
-        
         try (Connection connection = conexionBD.abrirConexionBD()){
             String query = "INSERT INTO `sistemacontrolhardwaresoftware`.`tecnico` (`numero_personal`, `nombre`, `apellido_paterno`, `apellido_materno`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(query);
             
-           
-            statement.setInt(1, Integer.parseInt(tecnico.getNumeroPersonal())); //primero la placa, posición 1
-            statement.setString(2, tecnico.getNombre()); //Pasa la marca, posición 2
-            statement.setString(3, tecnico.getApellidoPaterno() );  //pasa el modelo, posición 3
-            statement.setString(4, tecnico.getApellidoMaterno()); //pasa la reparación, posición 4
-            statement.setString(5, tecnico.getUsername()); //pasa la reparación, posición 4
-            statement.setString(6, tecnico.getPassword()); //pasa la reparación, posición 4
+            statement.setInt(1, Integer.parseInt(tecnico.getNumeroPersonal())); 
+            statement.setString(2, tecnico.getNombre()); 
+            statement.setString(3, tecnico.getApellidoPaterno() );
+            statement.setString(4, tecnico.getApellidoMaterno()); 
+            statement.setString(5, tecnico.getUsername());
+            statement.setString(6, tecnico.getPassword());
             
            statement.executeUpdate();
-
- 
-            
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -50,7 +44,6 @@ public class TecnicoDAO {
             String query = "SELECT * FROM Tecnico WHERE username = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, username);
-
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
@@ -67,7 +60,6 @@ public class TecnicoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

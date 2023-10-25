@@ -47,7 +47,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button id="boton_programas" layoutX="293.0" layoutY="246.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="186.0">
+      <Button id="boton_programas" layoutX="293.0" layoutY="246.0" mnemonicParsing="false" onAction="#ClicProgramas" prefHeight="90.0" prefWidth="186.0">
          <graphic>
             <ImageView fitHeight="79.0" fitWidth="79.0">
                <image>
@@ -56,7 +56,7 @@
             </ImageView>
          </graphic></Button>
       <Label layoutX="68.0" layoutY="213.0" text="Centro de cómputo" />
-      <Button layoutX="428.0" layoutY="368.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Regresar" />
+      <Button layoutX="428.0" layoutY="368.0" mnemonicParsing="false" onAction="#clicRegresar" prefHeight="26.0" prefWidth="70.0" text="Regresar" />
       <Label layoutX="295.0" layoutY="213.0" text="Equipo de cómputo" />
       <Label layoutX="68.0" layoutY="340.0" text="Bitácoras" />
       <Label layoutX="294.0" layoutY="340.0" text="Programas" />

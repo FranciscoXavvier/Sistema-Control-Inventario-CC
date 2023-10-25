@@ -4,6 +4,8 @@
  */
 package sistemahwsw.pojo;
 
+import java.util.Objects;
+
 /**
  *
  * @author super
@@ -54,6 +56,33 @@ public class Aplicacion {
 
     public void setIdioma(String idioma) {
         this.idioma = idioma;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aplicacion other = (Aplicacion) obj;
+        if (!Objects.equals(this.nombre.toLowerCase(), other.nombre.toLowerCase())) {
+            return false;
+        }
+        if (!Objects.equals(this.version, other.version)) {
+            return false;
+        }
+        return Objects.equals(this.idioma, other.idioma);
     }
     
     

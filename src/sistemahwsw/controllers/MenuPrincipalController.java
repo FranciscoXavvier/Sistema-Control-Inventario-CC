@@ -13,12 +13,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sistemahwsw.pojo.CentroComputo;
 import sistemahwsw.pojo.Tecnico;
+import sistemahwsw.utilidades.Utilidades;
 
 /**
  *
@@ -27,19 +30,11 @@ import sistemahwsw.pojo.Tecnico;
 public class MenuPrincipalController implements Initializable {
         
     
-    @FXML private javafx.scene.control.Button boton_usuario;
-    @FXML
+    private javafx.scene.control.Button boton_usuario;
     private Label label;
     
     @FXML
-    private Label bienvenido;
-    
- 
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private Button boton_cc;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,15 +54,15 @@ public class MenuPrincipalController implements Initializable {
         }
     }
     
-    public void salir(ActionEvent event){
-        try {
-            Stage stage = (Stage) boton_usuario.getScene().getWindow();
 
-            stage.close();
+    @FXML
+    private void ClicProgramas(ActionEvent event) {
+        Utilidades.cambiarVentana("Aplicaciones", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLAplicaciones.fxml");
+    }
 
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    private void clicRegresar(ActionEvent event) {
+        Utilidades.cambiarVentana("Inicio de sesión", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLLogin.fxml");
     }
 
 }

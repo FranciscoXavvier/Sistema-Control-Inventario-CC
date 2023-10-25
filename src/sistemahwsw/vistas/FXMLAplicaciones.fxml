@@ -8,19 +8,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="sistemahwsw.controllers.FXMLProgramasController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLAplicacionesController">
    <children>
       <Pane prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css">
          <children>
-            <Label layoutX="229.0" layoutY="11.0" text="Programas" textFill="WHITE">
+            <Label layoutX="224.0" layoutY="11.0" text="Aplicaciones" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <Button layoutX="84.0" layoutY="155.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="117.0">
+      <Button fx:id="btnConsultar" layoutX="84.0" layoutY="155.0" mnemonicParsing="false" onAction="#clicConsultar" prefHeight="113.0" prefWidth="117.0" styleClass="boton_generico" stylesheets="@../estilos/estilos.css">
          <graphic>
             <ImageView fitHeight="127.0" fitWidth="127.0">
                <image>
@@ -29,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="314.0" layoutY="155.0" mnemonicParsing="false">
+      <Button layoutX="314.0" layoutY="155.0" mnemonicParsing="false" onAction="#clicRegistrar" styleClass="boton_generico" stylesheets="@../estilos/estilos.css">
          <graphic>
             <ImageView fitHeight="127.0" fitWidth="127.0">
                <image>
@@ -38,14 +37,14 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label layoutX="84.0" layoutY="305.0" text="Consultar programas" />
-      <Label layoutX="314.0" layoutY="305.0" text="Registrar programas" />
-      <Label layoutX="237.0" layoutY="61.0" text="Programas">
+      <Label layoutX="84.0" layoutY="305.0" text="Consultar aplicaciones" />
+      <Label layoutX="314.0" layoutY="305.0" text="Registrar aplicaciones" />
+      <Label layoutX="228.0" layoutY="61.0" text="Aplicaciones">
          <font>
             <Font name="System Italic" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="121.0" layoutY="95.0" text="Selecciona una opción para realizar con los programas" />
-      <Button layoutX="428.0" layoutY="368.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="70.0" text="Volver" />
+      <Label layoutX="121.0" layoutY="95.0" text="Selecciona una opción para realizar con las aplicaciones" />
+      <Button layoutX="428.0" layoutY="368.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="26.0" prefWidth="70.0" styleClass="boton_editar" stylesheets="@../estilos/estilos.css" text="Volver" />
    </children>
 </AnchorPane>

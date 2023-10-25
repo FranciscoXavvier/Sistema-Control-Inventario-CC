@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -22,6 +23,7 @@ import javafx.stage.Stage;
 import modelo.dao.TecnicoDAO;
 import sistemahwsw.conexion.ConexionBD;
 import sistemahwsw.pojo.Tecnico;
+import sistemahwsw.utilidades.Utilidades;
 
 /**
  * FXML Controller class
@@ -48,7 +50,6 @@ public class LoginController implements Initializable {
         Connection conexion = connection.abrirConexionBD();
     }
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
     }    
     
     public void iniciarSesion(ActionEvent event) throws Exception {               
@@ -59,20 +60,7 @@ public class LoginController implements Initializable {
 
         if (tecnico != null && tecnico.getPassword().equals(password))
         {
-            try 
-            {    
-                Stage stageLogin = (Stage) boton_salir.getScene().getWindow();
-                stageLogin.close();
-
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLmenuPrincipal.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));  
-                stage.show();
-
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
+            Utilidades.cambiarVentana("Menú principal", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLmenuPrincipal.fxml");
             System.out.println("Inicio de sesión exitoso");
         } else {
             // Las credenciales son inválidas

@@ -26,12 +26,11 @@
             </Label>
             <Button fx:id="boton_registrar" layoutX="423.0" layoutY="70.0" mnemonicParsing="false" onAction="#registrar" prefHeight="25.0" prefWidth="142.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
             <Label layoutX="31.0" layoutY="114.0" text="Listado de equipos que están en el Centro de Cómputo 1" />
-            <TableView layoutX="31.0" layoutY="140.0" prefHeight="200.0" prefWidth="534.0" stylesheets="@../estilos/estilos.css">
+            <TableView fx:id="tvCentroComputo" layoutX="31.0" layoutY="140.0" prefHeight="200.0" prefWidth="534.0" stylesheets="@../estilos/estilos.css">
               <columns>
-                <TableColumn prefWidth="104.00006675720215" text="foto" />
-                <TableColumn prefWidth="46.39990234375" text="ID" />
-                  <TableColumn prefWidth="208.00006103515625" text="Nombre" />
-                  <TableColumn prefWidth="175.19998168945312" text="Opciones" />
+                <TableColumn fx:id="colFoto" prefWidth="104.00006675720215" text="foto" />
+                <TableColumn fx:id="colId" prefWidth="46.39990234375" text="ID" />
+                  <TableColumn fx:id="colNombre" prefWidth="208.00006103515625" text="Nombre" />
               </columns>
             </TableView>
             <Button layoutX="469.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" styleClass="boton_regresar" stylesheets="@../estilos/estilos.css" text="Regresar" />

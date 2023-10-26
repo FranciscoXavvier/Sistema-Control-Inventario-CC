@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLRegistrarEquipoComputoController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.RegistrarCentroComputoController">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0" stylesheets="@../estilos/estilos.css">
          <children>
@@ -21,7 +21,7 @@
             </Label>
             <Separator layoutX="-2.0" layoutY="41.0" prefHeight="0.0" prefWidth="600.0" />
             <Button layoutX="289.0" layoutY="340.0" mnemonicParsing="false" onAction="#registrar" prefHeight="25.0" prefWidth="130.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
-            <Button fx:id="boton_cancelar" layoutX="433.0" layoutY="340.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" styleClass="boton_cancelar" stylesheets="@../estilos/estilos.css" text="Cancelar" />
+            <Button fx:id="boton_cancelar" layoutX="433.0" layoutY="340.0" mnemonicParsing="false" onAction="#regresar" prefHeight="25.0" prefWidth="130.0" styleClass="boton_cancelar" stylesheets="@../estilos/estilos.css" text="Cancelar" />
             <Label layoutX="23.0" layoutY="79.0" text="Rellena la información con los campos requeridos.">
                <font>
                   <Font name="System Italic" size="12.0" />

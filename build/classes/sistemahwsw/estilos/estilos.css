@@ -72,3 +72,12 @@
     -fx-background-color:#003300;
     -fx-text-fill: white;
 }
+
+.boton-invisibla{
+    -fx-background-color:transparent;
+}
+
+.boton-invisibla:hover{
+    -fx-cursor:hand;
+    -fx-background-color:#0453a222;
+}

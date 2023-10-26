@@ -58,7 +58,16 @@ public class FXMLAplicacionesController implements Initializable {
     
     @FXML
     private void clicVolver(ActionEvent event) {
-        Utilidades.cambiarVentana("Menú principal", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLmenuPrincipal.fxml");
+        try {
+            Node origen = (Node) event.getSource();
+            Stage stage = (Stage) origen.getScene().getWindow();
+
+            stage.close();
+
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    
     }
     
     

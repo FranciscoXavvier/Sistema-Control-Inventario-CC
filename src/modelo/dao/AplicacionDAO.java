@@ -20,6 +20,7 @@ import sistemahwsw.utilidades.Utilidades;
  */
 public class AplicacionDAO {
     private static ConexionBD conexion = ConexionBD.getInstancia();
+    
     public static ArrayList<Aplicacion> obtenerAplicaciones() {
         ArrayList<Aplicacion> aplicacionesEncontradas = new ArrayList<>();
         Connection conexionBD = conexion.abrirConexionBD();

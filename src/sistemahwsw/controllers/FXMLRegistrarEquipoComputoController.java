@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import sistemahwsw.pojo.EquipoComputo;
 
@@ -20,22 +21,18 @@ import sistemahwsw.pojo.EquipoComputo;
  */
 public class FXMLRegistrarEquipoComputoController implements Initializable {
 
-    @FXML
     private TextField tf_procesador;
-    @FXML
     private TextField tf_tarjetaMadre;
-    @FXML
     private TextField tf_memoriaRam;
-    @FXML
     private TextField tf_almacenamiento;
-    @FXML
     private TextField tf_lectorOptico;
-    @FXML
     private TextField tf_codigoBarras;
-    @FXML
     private TextField tf_fila;
-    @FXML
     private TextField tf_columna;
+    @FXML
+    private Button boton_cancelar;
+    @FXML
+    private TextField tf_centro_computo;
 
     /**
      * Initializes the controller class.
@@ -45,11 +42,7 @@ public class FXMLRegistrarEquipoComputoController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void clicCancelar(ActionEvent event) {
-    }
 
-    @FXML
     private void clicRegistrar(ActionEvent event) {
         String procesador = tf_procesador.getText();
         String tarjeta_madre = tf_tarjetaMadre.getText();
@@ -75,6 +68,10 @@ public class FXMLRegistrarEquipoComputoController implements Initializable {
             alert.setHeaderText("Equipo de cómputo registrado correctamente.");
             alert.setContentText("La información se ha registrado correctamente.");
             alert.showAndWait();
+    }
+
+    @FXML
+    private void registrar(ActionEvent event) {
     }
     
 }

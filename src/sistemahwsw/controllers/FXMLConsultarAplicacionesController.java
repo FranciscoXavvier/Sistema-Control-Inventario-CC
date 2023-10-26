@@ -150,7 +150,7 @@ public class FXMLConsultarAplicacionesController implements Initializable {
     private void irAFormulario(Aplicacion app, FXMLFormularioAplicacionController.TipoOperacion operacion){
         try {
             FXMLLoader accesoControlador = 
-                    new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLFormularioAplicacion.fxml"));
+            new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLFormularioAplicacion.fxml"));
             Parent vista = accesoControlador.load();
             
             FXMLFormularioAplicacionController formulario = 

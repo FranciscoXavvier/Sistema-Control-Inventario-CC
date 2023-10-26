@@ -55,7 +55,7 @@ public class MenuPrincipalController implements Initializable {
     
     public void usuario(ActionEvent event){
         try{
-             FXMLLoader fxmlLoader = new FXMLLoader();
+            FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLConsultarTecnico.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load());
@@ -65,8 +65,7 @@ public class MenuPrincipalController implements Initializable {
             ConsultarTecnicoController controlador = (ConsultarTecnicoController) fxmlLoader.getController();
             controlador.parametros(miUsername, this);
             stage.showAndWait();
-            
-            Utilidades.cambiarVentana("Aplicaciones", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLConsultarTecnico.fxml");
+         
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -76,7 +75,16 @@ public class MenuPrincipalController implements Initializable {
     
     @FXML
     private void ClicProgramas(ActionEvent event) {
-        Utilidades.cambiarVentana("Aplicaciones", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLAplicaciones.fxml");
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLAplicaciones.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.showAndWait();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

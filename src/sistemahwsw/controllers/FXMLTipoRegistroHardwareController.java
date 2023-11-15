@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import sistemahwsw.utilidades.Utilidades;
 
 /**
  * FXML Controller class
@@ -33,22 +34,19 @@ public class FXMLTipoRegistroHardwareController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void centro_computo(ActionEvent event) {
-    }
 
     @FXML
     private void clicEquipoComputo(ActionEvent event) {
         try{
-            Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml"));
-            Parent root1 = (Parent) loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root1));
-            stage.show();
+            Utilidades.cambiarVentana("Registrar equipo de cómputo", boton_cc, "/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml");
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void clicPeriferico(ActionEvent event) {
+        
     }
     
 }

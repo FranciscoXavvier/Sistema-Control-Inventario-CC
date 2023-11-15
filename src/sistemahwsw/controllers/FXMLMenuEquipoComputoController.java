@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
+import sistemahwsw.pojo.EquipoComputo;
 
 /**
  * FXML Controller class
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
 public class FXMLMenuEquipoComputoController implements Initializable {
 
     @FXML
-    private TableView<?> tvEquipoComputo;
+    private TableView<EquipoComputo> tvEquipoComputo;
     @FXML
     private TableColumn<?, ?> tcId;
     @FXML
@@ -37,14 +38,14 @@ public class FXMLMenuEquipoComputoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
 
     @FXML
     private void clicRegistrar(ActionEvent event) {
         try{
             Stage stageConsultar = (Stage) tvEquipoComputo.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLTipoRegistrHardware.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLTipoRegistroHardware.fxml"));
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));

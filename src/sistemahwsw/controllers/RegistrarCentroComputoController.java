@@ -58,7 +58,6 @@ public class RegistrarCentroComputoController implements Initializable {
             alert.showAndWait();
     }   
     
-    @FXML
     public void cancelar(ActionEvent event) throws Exception{
          try{
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -77,6 +76,10 @@ public class RegistrarCentroComputoController implements Initializable {
             e.printStackTrace();
         }
        
+    }
+
+    @FXML
+    private void regresar(ActionEvent event) {
     }
 
 

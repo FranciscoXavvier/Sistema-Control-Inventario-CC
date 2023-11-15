@@ -113,6 +113,7 @@ public class MenuPrincipalController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLMenuEquipoComputo.fxml"));
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
+            stage.setTitle("Menú equipo de cómputo");
             stage.setScene(new Scene(root1));
             stage.show();
         }catch(Exception e){

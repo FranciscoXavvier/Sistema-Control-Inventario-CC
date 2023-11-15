@@ -21,18 +21,22 @@ import sistemahwsw.pojo.EquipoComputo;
  */
 public class FXMLRegistrarEquipoComputoController implements Initializable {
 
+    @FXML
     private TextField tf_procesador;
+    @FXML
     private TextField tf_tarjetaMadre;
+    @FXML
     private TextField tf_memoriaRam;
+    @FXML
     private TextField tf_almacenamiento;
+    @FXML
     private TextField tf_lectorOptico;
+    @FXML
     private TextField tf_codigoBarras;
+    @FXML
     private TextField tf_fila;
+    @FXML
     private TextField tf_columna;
-    @FXML
-    private Button boton_cancelar;
-    @FXML
-    private TextField tf_centro_computo;
 
     /**
      * Initializes the controller class.
@@ -43,6 +47,7 @@ public class FXMLRegistrarEquipoComputoController implements Initializable {
     }    
 
 
+    @FXML
     private void clicRegistrar(ActionEvent event) {
         String procesador = tf_procesador.getText();
         String tarjeta_madre = tf_tarjetaMadre.getText();
@@ -71,7 +76,7 @@ public class FXMLRegistrarEquipoComputoController implements Initializable {
     }
 
     @FXML
-    private void registrar(ActionEvent event) {
+    private void clicCancelar(ActionEvent event) {
     }
     
 }

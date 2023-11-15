@@ -27,7 +27,7 @@
 }
 
 .boton_regresar:hover{
-    -fx-background-color:bSlack;
+    -fx-background-color: black;
     -fx-text-fill: white;
 }
 

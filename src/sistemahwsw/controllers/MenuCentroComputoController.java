@@ -61,12 +61,10 @@ public class MenuCentroComputoController implements Initializable {
     @FXML
     public void registrar(ActionEvent event){
         try{
-                Stage stageConsultar = (Stage) boton_registrar.getScene().getWindow();
- 
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarCentroComputo.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
+                Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
-                stage.setScene(new Scene(root1));  
+                stage.setScene(new Scene(root));  
                 stage.show();
         }catch(Exception e){
             e.printStackTrace();

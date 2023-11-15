@@ -12,12 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml</file>
             <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/controllers/MenuCentroComputoController.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/controllers/RegistrarCentroComputoController.java</file>
             <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/controllers/FXMLTipoRegistroHardwareController.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/vistas/FXMLRegistrarCentroComputo.fxml</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/modelo/dao/CentroComputoDAO.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/controllers/FXMLRegistrarEquipoComputoController.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/SistemaHWSW/src/sistemahwsw/controllers/MenuPrincipalController.java</file>
         </group>
     </open-files>
 </project-private>

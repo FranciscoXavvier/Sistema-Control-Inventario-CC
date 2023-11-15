@@ -8,12 +8,9 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="SistemaHWSW.jar" size="280409" download="eager" />
-    <jar href="lib\mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
+    <jar href="SistemaHWSW.jar" size="280377" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.49.jar" size="1006904" download="eager" />
   </resources>
-  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="SistemaHWSW" >
-    <param name="requiredFXVersion" value="8.0+"/>
-  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="businesslogic.SistemaHWSW"  name="SistemaHWSW" />
   <update check="always"/>
 </jnlp>

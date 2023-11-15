@@ -26,7 +26,7 @@ public class CentroComputoDAO {
 
     public static CentroComputo registrar(int idTecnico,CentroComputo centroComputo){
         try (Connection connection = conexion.abrirConexionBD()){
-            String query = "INSERT INTO `sistemacontrolhardwaresoftware`.`centro_computo` (`Tecnico_idTecnico`,`nombre_centro_computo`) VALUES (?,?)";
+            String query = "INSERT INTO `SistemaControlHardwareSoftware`.`Centro_Computo` (`Tecnico_idTecnico`,`nombre_centro_computo`) VALUES (?,?)";
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setInt(1, 1); 
@@ -44,7 +44,7 @@ public class CentroComputoDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if (conexionBD != null){
             try {
-                String consulta = "SELECT idCentro_Computo, Tecnico_idTecnico, nombre_centro_computo FROM centro_computo";
+                String consulta = "SELECT idCentro_Computo, Tecnico_idTecnico, nombre_centro_computo FROM Centro_Computo";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();
                 while(resultadoConsulta.next()){

@@ -14,7 +14,7 @@ public class EquipoComputoDAO {
     private static ConexionBD conexionBD= ConexionBD.getInstancia();
     public static EquipoComputo registrar(EquipoComputo equipoComputo){
         try (Connection connection = conexionBD.abrirConexionBD()){
-            String query = "INSERT INTO `sistemacontrolhardwaresoftware`.`Equipo_Computo` (`procesador`,`tarjeta_madre`, `memoria_ram`, `almacenamiento`, `lector_optico`, `codigo_de_barras`, `fila`, `columna`) VALUES (?,?,?,?,?,?,?,?)";
+            String query = "INSERT INTO `SistemaControlHardwareSoftware`.`Equipo_Computo` (`procesador`,`tarjeta_madre`, `memoria_ram`, `almacenamiento`, `lector_optico`, `codigo_de_barras`, `fila`, `columna`) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement statement = connection.prepareStatement(query);
             
             statement.setString(1, equipoComputo.getProcesador());

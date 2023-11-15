@@ -18,7 +18,7 @@ public class ConexionBD {
         
     private static String driver = "com.mysql.jdbc.Driver";
     
-    private static String bd = "sistemacontrolhardwaresoftware";
+    private static String bd = "SistemaControlHardwareSoftware";
     
     private static String ip = "localhost";
     
@@ -27,8 +27,8 @@ public class ConexionBD {
     private static String urlConexion = "jdbc:mysql://"+ip+":"+puerto
             +"/"+bd+"?allowPublicKeyRetrieval=true&useSSL=false";
     
-    private static String usuario = "tecnico";
-    private static String password = "tecUV2023";
+    private static String usuario = "root";
+    private static String password = "Chivita65";
     private static ConexionBD instanciaDeConexion = new ConexionBD();
     
     

@@ -26,7 +26,7 @@ public class AplicacionDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if (conexionBD != null){
             try {
-                String consulta = "SELECT idSoftware, nombre, version, idioma FROM aplicaciones";
+                String consulta = "SELECT idSoftware, nombre, version, idioma FROM Aplicaciones";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();
                 while(resultadoConsulta.next()){
@@ -55,7 +55,7 @@ public class AplicacionDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try {
-                String consulta = "INSERT INTO aplicaciones (nombre, version, idioma) VALUES (?,?,?)";
+                String consulta = "INSERT INTO Aplicaciones (nombre, version, idioma) VALUES (?,?,?)";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setString(1, nuevaAplicacion.getNombre());
                 sentenciaPreparada.setString(2, nuevaAplicacion.getVersion());
@@ -80,7 +80,7 @@ public class AplicacionDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try{
-                String consulta = "DELETE FROM aplicaciones WHERE idSoftware = ?";
+                String consulta = "DELETE FROM Aplicaciones WHERE idSoftware = ?";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setInt(1, idAplicacion);
                 int filasAfectadas = sentenciaPreparada.executeUpdate();
@@ -101,7 +101,7 @@ public class AplicacionDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try{
-                String consulta = "UPDATE aplicaciones SET nombre = ?, version = ?, "
+                String consulta = "UPDATE Aplicaciones SET nombre = ?, version = ?, "
                         + "idioma =? WHERE idSoftware = ?";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setString(1, aplicacionEditada.getNombre());

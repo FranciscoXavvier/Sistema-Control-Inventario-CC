@@ -21,7 +21,7 @@ public class TecnicoDAO {
 
     public static Tecnico registrar(Tecnico tecnico){
         try (Connection connection = conexionBD.abrirConexionBD()){
-            String query = "INSERT INTO `sistemacontrolhardwaresoftware`.`tecnico` (`numero_personal`, `nombre`, `apellido_paterno`, `apellido_materno`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
+            String query = "INSERT INTO `SistemaControlHardwareSoftware`.`Tecnico` (`numero_personal`, `nombre`, `apellido_paterno`, `apellido_materno`, `username`, `password`) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(query);
             
             statement.setInt(1, Integer.parseInt(tecnico.getNumeroPersonal())); 

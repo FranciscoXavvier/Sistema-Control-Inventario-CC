@@ -88,6 +88,17 @@ public class MenuCentroComputoController implements Initializable {
         tvCentroComputo.setItems(ccBd);
     }
 
+    @FXML
+    public void regresar(ActionEvent event) throws Exception{
+         try{
+             Stage stage = (Stage) boton_registrar.getScene().getWindow();
+               stage.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+       
+    }
+    
     private void agregarBotones() {
         TableColumn<CentroComputo,String> colBotones = new TableColumn("Opciones");
         colBotones.setPrefWidth(175.19998168945312);

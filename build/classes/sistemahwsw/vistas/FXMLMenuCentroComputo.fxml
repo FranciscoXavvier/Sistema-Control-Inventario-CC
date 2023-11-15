@@ -33,7 +33,7 @@
                   <TableColumn fx:id="colNombre" prefWidth="208.00006103515625" text="Nombre" />
               </columns>
             </TableView>
-            <Button layoutX="469.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" styleClass="boton_regresar" stylesheets="@../estilos/estilos.css" text="Regresar" />
+            <Button layoutX="469.0" layoutY="354.0" mnemonicParsing="false" onAction="#regresar" prefHeight="25.0" prefWidth="94.0" styleClass="boton_regresar" stylesheets="@../estilos/estilos.css" text="Regresar" />
          </children>
       </Pane>
    </children>

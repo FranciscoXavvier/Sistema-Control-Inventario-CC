@@ -59,7 +59,7 @@ public class RegistrarCentroComputoController implements Initializable {
     }   
     
     @FXML
-    public void cancelar(ActionEvent event) throws Exception{
+    public void regresar(ActionEvent event) throws Exception{
          try{
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLMenuCentroComputo.fxml"));

@@ -35,7 +35,7 @@
       <Label layoutX="44.0" layoutY="243.0" text="Usuario" />
       <Label fx:id="lbl_numero_personal" layoutX="427.0" layoutY="178.0" text="numeroPersonal" />
       <Label fx:id="lbl_usuario" layoutX="45.0" layoutY="261.0" text="usuario" />
-      <Button layoutX="384.0" layoutY="377.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" styleClass="boton_editar" stylesheets="@../estilos/estilos.css" text="Editar" />
+      <Button layoutX="384.0" layoutY="377.0" mnemonicParsing="false" onAction="#editar" prefHeight="26.0" prefWidth="87.0" styleClass="boton_editar" stylesheets="@../estilos/estilos.css" text="Editar" />
       <Button fx:id="boton_salir" layoutX="596.0" layoutY="377.0" mnemonicParsing="false" onAction="#salir" prefHeight="26.0" prefWidth="78.0" styleClass="boton_regresar" stylesheets="@../estilos/estilos.css" text="Salir" />
       <Button layoutX="489.0" layoutY="377.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" styleClass="boton_cancelar" stylesheets="@../estilos/estilos.css" text="Eliminar" />
    </children>

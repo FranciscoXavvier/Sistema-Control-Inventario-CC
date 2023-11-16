@@ -33,6 +33,7 @@ public class MenuPrincipalController implements Initializable {
     private javafx.scene.control.Button boton_usuario;
     private Label label;
     private LoginController milc;
+    private FXMLEditarTecnicoController mietc;
     private String miUsername;
     
     @FXML
@@ -45,6 +46,12 @@ public class MenuPrincipalController implements Initializable {
     public void parametros(String username, LoginController lc){
         milc = lc;
         miUsername = username;
+        lbl_bienvenido.setText("Bienvenido "+miUsername+"!");
+    }
+    
+    public void parametrosDos(String username, FXMLEditarTecnicoController etc){
+        mietc=etc;
+        miUsername=username;
         lbl_bienvenido.setText("Bienvenido "+miUsername+"!");
     }
     

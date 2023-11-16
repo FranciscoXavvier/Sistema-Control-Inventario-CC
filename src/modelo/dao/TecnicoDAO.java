@@ -6,6 +6,7 @@
 package modelo.dao;
 
 import java.sql.Connection;
+import static java.sql.DriverManager.println;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -57,6 +58,24 @@ public class TecnicoDAO {
                 tecnico.setPassword(resultSet.getString("password"));
                 return tecnico;
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static Tecnico updateTecnico(int numeroPersonal,String usernameViejo, int idTecnico ){
+        try (Connection connection = conexionBD.abrirConexionBD()){
+        
+            String query = "UPDATE Tecnico SET numero_personal = ?,username = ? WHERE idTecnico = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, numeroPersonal);
+            statement.setString(2,usernameViejo);
+            statement.setInt(3,idTecnico);
+            int resultSet = statement.executeUpdate();
+            if(resultSet == 1){
+                     println("Se editó");
+                }
         } catch (SQLException e) {
             e.printStackTrace();
         }

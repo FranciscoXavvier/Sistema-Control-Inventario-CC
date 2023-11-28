@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  *
@@ -25,7 +26,9 @@ public class SistemaHWSW extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.initStyle(StageStyle.UTILITY);
         stage.setTitle("Inicio de sesión");
+        stage.setResizable(false);
         stage.show();
     }
 

@@ -9,7 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -27,6 +29,7 @@ public class ConsultarTecnicoController implements Initializable {
     @FXML private Label lbl_nombre;
     @FXML private Label lbl_numero_personal;
     @FXML private Label lbl_usuario;
+    private String miUsername;
     private MenuPrincipalController mimp;
     private Tecnico miUsuario;
     
@@ -44,6 +47,7 @@ public class ConsultarTecnicoController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    @FXML
     public void salir(ActionEvent event){
         try {
             Stage stage = (Stage) boton_salir.getScene().getWindow();
@@ -54,6 +58,25 @@ public class ConsultarTecnicoController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private void editar(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLEditarTecnico.fxml"));
+
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) boton_salir.getScene().getWindow();
+            stage.setScene(scene);
+            
+            FXMLEditarTecnicoController controlador1 = (FXMLEditarTecnicoController) fxmlLoader.getController();
+            controlador1.parametros(miUsuario.getUsername(), this);
+            stage.showAndWait();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
     
-    
+       
 }

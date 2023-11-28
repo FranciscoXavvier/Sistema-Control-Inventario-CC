@@ -5,6 +5,7 @@
  */
 package sistemahwsw.controllers;
 
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -19,6 +20,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import modelo.dao.TecnicoDAO;
 import sistemahwsw.conexion.ConexionBD;
@@ -37,6 +39,8 @@ public class LoginController implements Initializable {
      */
     @FXML private javafx.scene.control.Button boton_salir;
     @FXML private javafx.scene.control.Button boton_registrar_tecnico;
+    
+    
     
     @FXML
     private TextField tf_usuario;
@@ -79,13 +83,10 @@ public class LoginController implements Initializable {
             alert.setContentText("Asegurate de que ingreses la información que se necesita.");
             alert.showAndWait();
             System.out.println("Inicio de sesión fallido");
-        }
-        
-        
-        
-        //SI CREDENCIALES SON CORRECTAS
-       
+        } 
     }   
+    
+
     
     public void registrar(ActionEvent event) throws Exception{
         try{
@@ -100,6 +101,8 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+ 
     
     public void salir(ActionEvent event) throws Exception {               
         try {

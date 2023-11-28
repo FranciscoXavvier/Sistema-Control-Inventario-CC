@@ -4,6 +4,7 @@
 
 .boton_registrar{
     -fx-background-color: #33CC00;
+    -fx-text-fill: white;
 }
 
 .boton_registrar:hover{

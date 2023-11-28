@@ -25,9 +25,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelo.dao.AplicacionDAO;
+import modelo.dao.ProgramaDAO;
 import modelo.dao.CentroComputoDAO;
-import sistemahwsw.pojo.Aplicacion;
+import sistemahwsw.pojo.Programa;
 import sistemahwsw.pojo.CentroComputo;
 import sistemahwsw.utilidades.Utilidades;
 

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sistemahwsw.dao;
+package modelo.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,30 +11,33 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.scene.control.Alert;
 import sistemahwsw.conexion.ConexionBD;
-import sistemahwsw.pojo.Aplicacion;
+import sistemahwsw.pojo.Programa;
+import sistemahwsw.pojo.SistemaOperativo;
 import sistemahwsw.utilidades.Utilidades;
 
 /**
  *
- * @author super
+ * @author aaron
  */
-public class AplicacionDAO {
-    private static ConexionBD conexion = ConexionBD.getInstancia();
-    public static ArrayList<Aplicacion> obtenerAplicaciones(){
-        ArrayList<Aplicacion> aplicacionesEncontradas = new ArrayList<>();
+public class SistemaOperativoDAO {
+private static ConexionBD conexion = ConexionBD.getInstancia();
+    
+    public static ArrayList<SistemaOperativo> obtenerProgramaes() {
+        ArrayList<SistemaOperativo> osEncontrados = new ArrayList<>();
         Connection conexionBD = conexion.abrirConexionBD();
         if (conexionBD != null){
             try {
-                String consulta = "SELECT idSoftware, nombre, version, idioma FROM aplicaciones";
+                String consulta = "SELECT * FROM Sistema_Operativo";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();
                 while(resultadoConsulta.next()){
-                    Aplicacion aplicacionAux = new Aplicacion();
-                    aplicacionAux.setIdAplicacion(resultadoConsulta.getInt("idSoftware"));
-                    aplicacionAux.setNombre(resultadoConsulta.getString("nombre"));
-                    aplicacionAux.setVersion(resultadoConsulta.getString("version"));
-                    aplicacionAux.setIdioma(resultadoConsulta.getString("idioma"));
-                    aplicacionesEncontradas.add(aplicacionAux);
+                    SistemaOperativo osAux = new SistemaOperativo();
+                    osAux.setIdPrograma(resultadoConsulta.getInt("idSistema_Operativo"));
+                    osAux.setVersion(resultadoConsulta.getString("version"));
+                    osAux.setNombre(resultadoConsulta.getString("nombre"));
+                    osAux.setArquitectura(resultadoConsulta.getString("arquitectura"));
+                    osAux.setTipo(resultadoConsulta.getString("tipo"));
+                    osEncontrados.add(osAux);
                 }
             }catch(SQLException e){
                 Utilidades.mostrarAlertaSimple("Error", "No hay conexión con la base de datos", 
@@ -46,7 +49,6 @@ public class AplicacionDAO {
         }else{
             Utilidades.mostrarAlertaSimple("Error", "No hay conexión a la base de datos", Alert.AlertType.ERROR);
         }
-        return aplicacionesEncontradas;
-    }
-    
+        return osEncontrados;
+    }    
 }

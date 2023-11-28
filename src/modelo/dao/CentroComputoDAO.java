@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javafx.scene.control.Alert;
 import sistemahwsw.conexion.ConexionBD;
-import sistemahwsw.pojo.Aplicacion;
+import sistemahwsw.pojo.Programa;
 import sistemahwsw.pojo.CentroComputo;
 import sistemahwsw.utilidades.Utilidades;
 

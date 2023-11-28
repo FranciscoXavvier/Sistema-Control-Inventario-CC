@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,8 +24,11 @@ import sistemahwsw.utilidades.Utilidades;
  */
 public class FXMLTipoRegistroHardwareController implements Initializable {
 
+    private int idCC;
     @FXML
     private Button boton_cc;
+    @FXML
+    private Button clicRegresar;
 
     /**
      * Initializes the controller class.
@@ -38,7 +42,19 @@ public class FXMLTipoRegistroHardwareController implements Initializable {
     @FXML
     private void clicEquipoComputo(ActionEvent event) {
         try{
-            Utilidades.cambiarVentana("Registrar equipo de cómputo", boton_cc, "/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml");
+            FXMLLoader accesoControlador = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml"));
+            Parent vista = accesoControlador.load();
+            FXMLRegistrarEquipoComputoController registro = accesoControlador.getController();
+            
+            registro.inicializarIdCC(idCC);
+            registro.inicializarSistemasOperativos();
+            registro.setOperacion(FXMLRegistrarEquipoComputoController.TipoOperacion.REGISTRO);
+            
+            Scene escena = new Scene(vista);
+            Node nodo = (Node) event.getSource();
+            Stage escenario = (Stage) nodo.getScene().getWindow();
+            escenario.setScene(escena);
+            
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -49,4 +65,7 @@ public class FXMLTipoRegistroHardwareController implements Initializable {
         
     }
     
+    public void inicializaridCC(int idCC){
+        this.idCC = idCC;
+    }
 }

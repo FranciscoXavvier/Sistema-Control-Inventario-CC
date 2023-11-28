@@ -77,7 +77,7 @@ public class MenuPrincipalController implements Initializable {
     private void ClicProgramas(ActionEvent event) {
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLAplicaciones.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLProgramas.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             stage.setScene(scene);
@@ -110,7 +110,7 @@ public class MenuPrincipalController implements Initializable {
     private void clicIrEquipoComputo(ActionEvent event) {
         try{
             Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLMenuEquipoComputo.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLConsultarCC.fxml"));
             Parent root1 = (Parent) loader.load();
             Stage stage = new Stage();
             stage.setTitle("Menú equipo de cómputo");

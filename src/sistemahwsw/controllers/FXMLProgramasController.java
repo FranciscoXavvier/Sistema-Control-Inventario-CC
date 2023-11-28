@@ -16,7 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import sistemahwsw.pojo.Aplicacion;
 import sistemahwsw.utilidades.Utilidades;
 
 /**
@@ -24,7 +23,7 @@ import sistemahwsw.utilidades.Utilidades;
  *
  * @author super
  */
-public class FXMLAplicacionesController implements Initializable {
+public class FXMLProgramasController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -32,23 +31,23 @@ public class FXMLAplicacionesController implements Initializable {
     
     @FXML
     private void clicConsultar(ActionEvent event) {
-        Utilidades.cambiarVentana("Consultando programas", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLConsultarAplicaciones.fxml");
+        Utilidades.cambiarVentana("Consultando programas", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLConsultarProgramas.fxml");
     }
 
     @FXML
     private void clicRegistrar(ActionEvent event) {
         try{
             FXMLLoader accesoControlador = new FXMLLoader(getClass().
-                    getResource("/sistemahwsw/vistas/FXMLFormularioAplicacion.fxml"));
+                    getResource("/sistemahwsw/vistas/FXMLFormularioPrograma.fxml"));
             Parent vista = accesoControlador.load();
             
-            FXMLFormularioAplicacionController formulario = 
+            FXMLFormularioProgramaController formulario = 
                     accesoControlador.getController();
             Scene escenaFormulario = new Scene(vista);
             Node origen = (Node) event.getSource();
             Stage escenario = (Stage) origen.getScene().getWindow();
             escenario.setScene(escenaFormulario);
-            formulario.inicializarComponentes(null, FXMLFormularioAplicacionController.TipoOperacion.REGISTRO);
+            formulario.inicializarComponentes(null, FXMLFormularioProgramaController.TipoOperacion.REGISTRO);
         } catch (IOException e) {
             Utilidades.mostrarAlertaSimple("Error", "No se puede mostrar la pantalla de formulario", 
                     Alert.AlertType.ERROR);

@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="sistemahwsw.controllers.FXMLFormularioAplicacionController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLFormularioProgramaController">
    <children>
       <Pane prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css">
          <children>
-            <Label layoutX="181.0" layoutY="11.0" text="Formulario de aplicaciones" textFill="WHITE">
+            <Label layoutX="192.0" layoutY="12.0" text="Formulario de Programas" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -25,15 +24,17 @@
          </font>
       </Label>
       <Label fx:id="lbInstruccion" layoutX="41.0" layoutY="87.0" prefHeight="17.0" prefWidth="455.0" textAlignment="CENTER" />
-      <Label layoutX="115.0" layoutY="195.0" text="Nombre" />
+      <Label fx:id="lbID" layoutX="149.0" layoutY="149.0" text="ID" visible="false" />
+      <Label layoutX="113.0" layoutY="189.0" text="Nombre" />
       <Button layoutX="428.0" layoutY="368.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="25.0" prefWidth="64.0" styleClass="boton_editar" stylesheets="@../estilos/estilos.css" text="Volver" />
       <Button fx:id="btnRegistrar" layoutX="343.0" layoutY="368.0" mnemonicParsing="false" onAction="#clicRegistrar" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" visible="false" />
-      <Label layoutX="117.0" layoutY="242.0" text="Versión" />
-      <Label layoutX="118.0" layoutY="288.0" text="Idioma" />
-      <TextField fx:id="tfID" disable="true" layoutX="192.0" layoutY="145.0" visible="false" />
-      <TextField fx:id="tfNombre" layoutX="192.0" layoutY="191.0" promptText="Dev c++" style="-fx-border-color: CFCFCF;" />
-      <TextField fx:id="tfVersion" layoutX="192.0" layoutY="238.0" promptText="5.0.0" />
-      <TextField fx:id="tfIdioma" layoutX="192.0" layoutY="284.0" promptText="Inglés" />
-      <Label fx:id="lbID" layoutX="149.0" layoutY="149.0" text="ID" visible="false" />
+      <Label layoutX="115.0" layoutY="230.0" text="Versión" />
+      <Label layoutX="118.0" layoutY="270.0" text="Idioma" />
+      <Label layoutX="117.0" layoutY="310.0" text="Edición" />
+      <TextField fx:id="tfID" disable="true" layoutX="190.0" layoutY="145.0" visible="false" />
+      <TextField fx:id="tfNombre" layoutX="190.0" layoutY="185.0" promptText="Dev c++" style="-fx-border-color: CFCFCF;" />
+      <TextField fx:id="tfVersion" layoutX="190.0" layoutY="225.0" promptText="5.0.0" />
+      <TextField fx:id="tfIdioma" layoutX="190.0" layoutY="265.0" promptText="Inglés" />
+      <TextField fx:id="tfEdicion" layoutX="190.0" layoutY="305.0" promptText="Community edition" />
    </children>
 </AnchorPane>

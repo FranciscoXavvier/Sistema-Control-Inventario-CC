@@ -18,14 +18,15 @@ CREATE SCHEMA IF NOT EXISTS `SistemaControlHardwareSoftware` ;
 USE `SistemaControlHardwareSoftware` ;
 
 -- -----------------------------------------------------
--- Table `SistemaControlHardwareSoftware`.`Aplicaciones`
+-- Table `SistemaControlHardwareSoftware`.`Programa`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaControlHardwareSoftware`.`Aplicaciones` (
-  `idSoftware` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `SistemaControlHardwareSoftware`.`Programa` (
+  `idPrograma` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `version` VARCHAR(45) NULL,
+  `edicion` VARCHAR(45) NULL,
   `idioma` VARCHAR(45) NULL,
-  PRIMARY KEY (`idSoftware`))
+  PRIMARY KEY (`idPrograma`))
 ENGINE = InnoDB;
 
 
@@ -46,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `SistemaControlHardwareSoftware`.`Sistema_Operativo` 
   `idSistema_Operativo` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `version` VARCHAR(45) NULL,
+  `edicion` VARCHAR(45) NULL,
   `arquitectura` VARCHAR(45) NULL,
   `tipo` VARCHAR(45) NULL,
   `idioma` VARCHAR(45) NULL,
@@ -136,18 +138,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `SistemaControlHardwareSoftware`.`Aplicaciones_Instaladas`
+-- Table `SistemaControlHardwareSoftware`.`Programa_Instalado`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `SistemaControlHardwareSoftware`.`Aplicaciones_Instaladas` (
-  `Aplicaciones_idSoftware` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `SistemaControlHardwareSoftware`.`Programa_Instalado` (
+  `Programa_idPrograma` INT NOT NULL,
   `CPU_idCPU` INT NOT NULL,
-  PRIMARY KEY (`Aplicaciones_idSoftware`, `CPU_idCPU`),
-  CONSTRAINT `fk_Aplicaciones_has_CPU_Aplicaciones1`
-    FOREIGN KEY (`Aplicaciones_idSoftware`)
-    REFERENCES `SistemaControlHardwareSoftware`.`Aplicaciones` (`idSoftware`)
+  PRIMARY KEY (`Programa_idPrograma`, `CPU_idCPU`),
+  CONSTRAINT `fk_Programa_has_CPU_Programa1`
+    FOREIGN KEY (`Programa_idPrograma`)
+    REFERENCES `SistemaControlHardwareSoftware`.`Programa` (`idPrograma`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Aplicaciones_has_CPU_CPU1`
+  CONSTRAINT `fk_Programa_has_CPU_CPU1`
     FOREIGN KEY (`CPU_idCPU`)
     REFERENCES `SistemaControlHardwareSoftware`.`Equipo_Computo` (`idCPU`)
     ON DELETE NO ACTION

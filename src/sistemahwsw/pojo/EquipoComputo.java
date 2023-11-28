@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class EquipoComputo {
     private int idEquipo;
+    private int idCentroComputo;
     private String procesador;
     private String tarjetaMadre;
     private String memoriaRam;
@@ -20,14 +21,15 @@ public class EquipoComputo {
     private String codigoDeBarras;
     private String fila;
     private String columna;
-    private ArrayList<Aplicacion> aplicaciones;
+    private ArrayList<Programa> Programaes;
     private SistemaOperativo sistemaOperativoInstalado;
 
     public EquipoComputo() {
     }
 
-    public EquipoComputo(int idEquipo, String procesador, String tarjetaMadre, String memoriaRam, String almacenamiento, String lectorOptico, String codigoDeBarras, String fila, String columna, ArrayList<Aplicacion> aplicaciones, SistemaOperativo sistemaOperativoInstalado) {
+    public EquipoComputo(int idEquipo, int idCentroComputo, String procesador, String tarjetaMadre, String memoriaRam, String almacenamiento, String lectorOptico, String codigoDeBarras, String fila, String columna, ArrayList<Programa> Programaes, SistemaOperativo sistemaOperativoInstalado) {
         this.idEquipo = idEquipo;
+        this.idCentroComputo = idCentroComputo;
         this.procesador = procesador;
         this.tarjetaMadre = tarjetaMadre;
         this.memoriaRam = memoriaRam;
@@ -36,7 +38,7 @@ public class EquipoComputo {
         this.codigoDeBarras = codigoDeBarras;
         this.fila = fila;
         this.columna = columna;
-        this.aplicaciones = aplicaciones;
+        this.Programaes = Programaes;
         this.sistemaOperativoInstalado = sistemaOperativoInstalado;
     }
 
@@ -48,6 +50,14 @@ public class EquipoComputo {
         this.idEquipo = idEquipo;
     }
 
+    public int getIdCentroComputo() {
+        return idCentroComputo;
+    }
+
+    public void setIdCentroComputo(int idCentroComputo) {
+        this.idCentroComputo = idCentroComputo;
+    }
+    
     public String getProcesador() {
         return procesador;
     }
@@ -112,12 +122,12 @@ public class EquipoComputo {
         this.columna = columna;
     }
 
-    public ArrayList<Aplicacion> getAplicaciones() {
-        return aplicaciones;
+    public ArrayList<Programa> getProgramaes() {
+        return Programaes;
     }
 
-    public void setAplicaciones(ArrayList<Aplicacion> aplicaciones) {
-        this.aplicaciones = aplicaciones;
+    public void setProgramaes(ArrayList<Programa> Programaes) {
+        this.Programaes = Programaes;
     }
 
     public SistemaOperativo getSistemaOperativoInstalado() {

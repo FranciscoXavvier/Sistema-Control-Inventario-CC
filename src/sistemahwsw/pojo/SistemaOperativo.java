@@ -8,25 +8,25 @@ package sistemahwsw.pojo;
  *
  * @author super
  */
-public class SistemaOperativo extends Aplicacion{
+public class SistemaOperativo extends Programa{
     private String arquitectura;
     private String tipo;
-
-    public SistemaOperativo() {
+    
+    public SistemaOperativo(){
     }
 
-    public SistemaOperativo(String arquitectura, String tipo, int idAplicacion, String nombre, String version, String idioma) {
-        super(idAplicacion, nombre, version, idioma);
+    public SistemaOperativo(String arquitectura, String tipo, int idPrograma, String nombre, String version, String idioma, String edicion) {
+        super(idPrograma, nombre, version, idioma, edicion);
         this.arquitectura = arquitectura;
         this.tipo = tipo;
     }
 
-    public int getIdAplicacion() {
-        return idAplicacion;
+    public int getIdPrograma() {
+        return idPrograma;
     }
 
-    public void setIdAplicacion(int idAplicacion) {
-        this.idAplicacion = idAplicacion;
+    public void setIdPrograma(int idPrograma) {
+        this.idPrograma = idPrograma;
     }
 
     public String getNombre() {
@@ -68,5 +68,12 @@ public class SistemaOperativo extends Aplicacion{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    public String toString() {
+        return nombre + " " + version + " " + arquitectura + " " + tipo;
+    }
+    
+    
     
 }

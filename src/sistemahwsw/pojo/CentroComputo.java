@@ -66,6 +66,12 @@ public class CentroComputo {
     public void setEquiposDeComputo(ArrayList<EquipoComputo> equiposDeComputo) {
         this.equiposDeComputo = equiposDeComputo;
     }
+
+    @Override
+    public String toString() {
+        return nombreCentroComputo;
+    }
+    
     
     
 }

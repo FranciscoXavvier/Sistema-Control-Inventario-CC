@@ -26,8 +26,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelo.dao.AplicacionDAO;
-import sistemahwsw.pojo.Aplicacion;
+import modelo.dao.ProgramaDAO;
+import sistemahwsw.pojo.Programa;
 import sistemahwsw.utilidades.Utilidades;
 
 /**
@@ -35,17 +35,17 @@ import sistemahwsw.utilidades.Utilidades;
  *
  * @author super
  */
-public class FXMLConsultarAplicacionesController implements Initializable {
+public class FXMLConsultarProgramasController implements Initializable {
 
     @FXML
-    private TableView<Aplicacion> tvProgramas;
+    private TableView<Programa> tvProgramas;
     @FXML
     private TableColumn<?, ?> colID;
     @FXML
     private TableColumn<?, ?> colNombre;
     
-    private ObservableList<Aplicacion> aplicacionesBD;
-    private ArrayList<Aplicacion> aplicacionesRespuesta;
+    private ObservableList<Programa> ProgramasBD;
+    private ArrayList<Programa> ProgramasRespuesta;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -54,28 +54,27 @@ public class FXMLConsultarAplicacionesController implements Initializable {
     }    
 
     private void configurarTabla(){
-        colID.setCellValueFactory(new PropertyValueFactory("idAplicacion"));
+        colID.setCellValueFactory(new PropertyValueFactory("idPrograma"));
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         agregarBotones();
     }
     
     private void cargarDatosTabla(){
-        aplicacionesBD = FXCollections.observableArrayList();
-        aplicacionesRespuesta = AplicacionDAO.obtenerAplicaciones();
-        for (Aplicacion app : aplicacionesRespuesta){
-            aplicacionesBD.add(app);
-            System.out.println(app.getNombre());
+        ProgramasBD = FXCollections.observableArrayList();
+        ProgramasRespuesta = ProgramaDAO.obtenerProgramas();
+        for (Programa app : ProgramasRespuesta){
+            ProgramasBD.add(app);
         }
-        tvProgramas.setItems(aplicacionesBD);
+        tvProgramas.setItems(ProgramasBD);
     }
     
     private void agregarBotones(){
-        TableColumn<Aplicacion,String> colBotones = new TableColumn("Opciones");
+        TableColumn<Programa,String> colBotones = new TableColumn("Opciones");
         colBotones.setPrefWidth(150);
-        Callback<TableColumn<Aplicacion, String>, TableCell<Aplicacion, String>> cellFactory = new Callback<TableColumn<Aplicacion, String>, TableCell<Aplicacion, String>>() {
+        Callback<TableColumn<Programa, String>, TableCell<Programa, String>> cellFactory = new Callback<TableColumn<Programa, String>, TableCell<Programa, String>>() {
             @Override
-            public TableCell<Aplicacion, String> call(final TableColumn<Aplicacion, String> param) {
-                final TableCell<Aplicacion, String> cell = new TableCell<Aplicacion, String>() {
+            public TableCell<Programa, String> call(final TableColumn<Programa, String> param) {
+                final TableCell<Programa, String> cell = new TableCell<Programa, String>() {
 
                     private final Button btnConsultar = new Button("Consultar");
                     private final Button btnModificar = new Button("Modificar");
@@ -95,20 +94,20 @@ public class FXMLConsultarAplicacionesController implements Initializable {
                         btnModificar.setPrefWidth(150);
                         btnEliminar.setPrefWidth(150);
                         btnConsultar.setOnAction((ActionEvent event) -> {
-                            Aplicacion seleccion = getTableView().getItems().get(getIndex());
-                            irAFormulario(seleccion, FXMLFormularioAplicacionController.TipoOperacion.CONSULTA);
+                            Programa seleccion = getTableView().getItems().get(getIndex());
+                            irAFormularioPrograma(seleccion, FXMLFormularioProgramaController.TipoOperacion.CONSULTA);
                         });
                         btnModificar.setOnAction((ActionEvent event) ->{
-                            Aplicacion seleccion = getTableView().getItems().get(getIndex());
-                            irAFormulario(seleccion, FXMLFormularioAplicacionController.TipoOperacion.EDICION);
+                            Programa seleccion = getTableView().getItems().get(getIndex());
+                            irAFormularioPrograma(seleccion, FXMLFormularioProgramaController.TipoOperacion.EDICION);
                         });
                         btnEliminar.setOnAction((ActionEvent event) ->{
-                            Aplicacion seleccion = getTableView().getItems().get(getIndex());
+                            Programa seleccion = getTableView().getItems().get(getIndex());
                             boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Confirmación de eliminación de aplicación", 
                                     "El programa será eliminado y cualquier equipo de cómputo que se encuentre con la "
                                             + "aplicación registrada será eliminada ¿Desea continuar con la acción?");
                             if (confirmarEliminacion){
-                                if(AplicacionDAO.eliminarAplicacion(seleccion.getIdAplicacion())){
+                                if(ProgramaDAO.eliminarPrograma(seleccion.getIdPrograma())){
                                     Utilidades.mostrarAlertaSimple("Éxito en la operación", 
                                             "Aplicación eliminado de manera exitosa", 
                                             Alert.AlertType.INFORMATION);
@@ -147,18 +146,18 @@ public class FXMLConsultarAplicacionesController implements Initializable {
 
     }
     
-    private void irAFormulario(Aplicacion app, FXMLFormularioAplicacionController.TipoOperacion operacion){
+    private void irAFormularioPrograma(Programa app, FXMLFormularioProgramaController.TipoOperacion operacion){
         try {
             FXMLLoader accesoControlador = 
-            new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLFormularioAplicacion.fxml"));
+                    new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLFormularioPrograma.fxml"));
             Parent vista = accesoControlador.load();
             
-            FXMLFormularioAplicacionController formulario = 
+            FXMLFormularioProgramaController formulario = 
                     accesoControlador.getController();
             Scene escenaFormulario = new Scene(vista);
             Stage escenario = (Stage) tvProgramas.getScene().getWindow();
             escenario.setScene(escenaFormulario);
-            formulario.setListaAplicacionesBD(aplicacionesRespuesta);
+            formulario.setListaProgramasBD(ProgramasRespuesta);
             formulario.inicializarComponentes(app, operacion);
         } catch (IOException e) {
             Utilidades.mostrarAlertaSimple("Error", "No se puede mostrar la pantalla de formulario", 
@@ -168,7 +167,7 @@ public class FXMLConsultarAplicacionesController implements Initializable {
     
     @FXML
     private void clicVolver(ActionEvent event) {
-        Utilidades.cambiarVentana("Aplicaciones", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLAplicaciones.fxml");
+        Utilidades.cambiarVentana("Programaes", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLProgramas.fxml");
     }
     
 }

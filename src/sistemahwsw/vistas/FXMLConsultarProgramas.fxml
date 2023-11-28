@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLConsultarAplicacionesController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLConsultarProgramasController">
    <children>
       <Pane prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css">
          <children>
@@ -26,5 +26,6 @@
         </columns>
       </TableView>
       <Button layoutX="428.0" layoutY="368.0" mnemonicParsing="false" onAction="#clicVolver" prefHeight="25.0" prefWidth="64.0" styleClass="boton_editar" stylesheets="@../estilos/estilos.css" text="Volver" />
+      <Label layoutX="43.0" layoutY="52.0" text="Listado de programas registrados" />
    </children>
 </AnchorPane>

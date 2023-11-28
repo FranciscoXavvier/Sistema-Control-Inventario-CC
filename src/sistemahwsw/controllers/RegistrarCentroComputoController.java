@@ -1,5 +1,6 @@
 package sistemahwsw.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -16,8 +17,8 @@ import modelo.dao.CentroComputoDAO;
 import sistemahwsw.conexion.ConexionBD;
 import sistemahwsw.pojo.CentroComputo;
 
-
 public class RegistrarCentroComputoController implements Initializable {
+
     /**
      * Initializes the controller class.
      */
@@ -37,34 +38,39 @@ public class RegistrarCentroComputoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
-    public void registrar(ActionEvent event) throws Exception {               
+    public void registrar(ActionEvent event) throws Exception {
 
-        String nombre=tf_centro_computo.getText();
-
+        String nombre = tf_centro_computo.getText();
 
         CentroComputo centroComputo = new CentroComputo();
         centroComputo.setNombreCentroComputo(nombre);
         centroComputo.setIdTecnico(1);
-        CentroComputoDAO.registrar(1,centroComputo);
+        CentroComputoDAO.registrar(1, centroComputo);
 
         // Las credenciales son inválidas
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Registro exitoso");
-            alert.setHeaderText("Centro de cómputo registrado correctamente.");
-            alert.setContentText("La información se ha registrado correctamente .");
-            alert.showAndWait();
-    }   
-    
-<<<<<<< HEAD
-    public void cancelar(ActionEvent event) throws Exception{
-=======
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Registro exitoso");
+        alert.setHeaderText("Centro de cómputo registrado correctamente.");
+        alert.setContentText("La información se ha registrado correctamente .");
+        alert.showAndWait();
+        cerrarVentana();
+    }
+
     @FXML
-    public void regresar(ActionEvent event) throws Exception{
->>>>>>> a3807e47c525ade9cc2f6b46468e1480ccd1f197
-         try{
+    public void regresar(ActionEvent event) throws Exception {
+        try {
+            cerrarVentana();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void cerrarVentana() {
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/sistemahwsw/vistas/FXMLMenuCentroComputo.fxml"));
 
@@ -72,20 +78,17 @@ public class RegistrarCentroComputoController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(scene);
 
-            MenuCentroComputoController controlador = (MenuCentroComputoController) fxmlLoader.getController();
+            MenuCentroComputoController controlador = fxmlLoader.getController();
             controlador.configurarTabla();
             controlador.cargarDatosTabla();
-            stage.showAndWait();
-         
-        }catch(Exception e){
-            e.printStackTrace();
+            stage.show();
+
+            Stage escenarioActual = (Stage) tf_centro_computo.getScene().getWindow();
+            escenarioActual.close();
+            
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
-       
     }
-
-    @FXML
-    private void regresar(ActionEvent event) {
-    }
-
 
 }

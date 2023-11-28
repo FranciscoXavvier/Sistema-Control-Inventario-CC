@@ -38,7 +38,12 @@
       <Label layoutX="389.0" layoutY="183.0" text="Usuario" />
       <Label layoutX="38.0" layoutY="255.0" text="Contraseña" />
       <Label layoutX="206.0" layoutY="255.0" text="Confirmar contraseña" />
+<<<<<<< HEAD
+      <TextField fx:id="tf_cpnfirmar_contrasena" layoutX="206.0" layoutY="277.0" />
+      <PasswordField fx:id="tf_contrasena" layoutX="39.0" layoutY="277.0" />
+=======
       <PasswordField fx:id="tf_contrasena" layoutX="39.0" layoutY="277.0" />
       <PasswordField layoutX="207.0" layoutY="277.0" />
+>>>>>>> a3807e47c525ade9cc2f6b46468e1480ccd1f197
    </children>
 </AnchorPane>

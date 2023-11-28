@@ -69,9 +69,10 @@ public class LoginController implements Initializable {
 
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) tf_usuario.getScene().getWindow();
+            stage.setTitle("Menú principal");
             stage.setScene(scene);
 
-            MenuPrincipalController controlador = (MenuPrincipalController) fxmlLoader.getController();
+            MenuPrincipalController controlador = fxmlLoader.getController();
             controlador.parametros(username, this);
             
             

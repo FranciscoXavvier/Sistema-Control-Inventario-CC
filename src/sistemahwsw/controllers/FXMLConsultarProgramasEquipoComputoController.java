@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +20,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -29,6 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import modelo.dao.ProgramaDAO;
+import modelo.dao.ProgramaInstaladoDAO;
 import sistemahwsw.pojo.EquipoComputo;
 import sistemahwsw.pojo.Programa;
 import sistemahwsw.utilidades.Utilidades;
@@ -49,6 +49,9 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
     @FXML
     private TableView<Programa> tvProgramas;
 
+    private ArrayList<Programa> programasAgregados = new ArrayList<>();
+    private ArrayList<Programa> programasEliminados = new ArrayList<>();
+    
     private ObservableList<Programa> programasAsignados;
     private ObservableList<Programa> programasBD;
     private ArrayList<Programa> resultadoProgramasAsignados;
@@ -57,6 +60,8 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
     private TableColumn<Programa, String> colOpciones;
     @FXML
     private Button btnAsignar;
+    @FXML
+    private TableColumn<?, ?> colAsignar;
 
     /**
      * Initializes the controller class.
@@ -72,7 +77,25 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
     public void configurarTabla() {
         colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
         colEdicion.setCellValueFactory(new PropertyValueFactory("edicion"));
+        colAsignar.setCellValueFactory(new PropertyValueFactory("instalado"));
         recuperarProgramasBD();
+        for (Programa p:programasBD){
+            p.getInstalado().selectedProperty().addListener(new ChangeListener<Boolean>() {
+                public void changed(ObservableValue<? extends Boolean> ov,
+                        Boolean old_val, Boolean new_val) {
+                    if (new_val){
+                        programasEliminados.remove(p);
+                        programasAgregados.add(p);
+                        System.out.println("Programa agregado: " + p);
+                    }else{
+                        programasAgregados.remove(p);
+                        programasEliminados.add(p);
+                        System.out.println("Programa eliminado: " + p);
+                    }
+                }
+
+            });
+        }
         agregarBotones();
     }
 
@@ -97,6 +120,8 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
     }
 
     private void agregarBotones() {
+        colOpciones.setVisible(true);
+        colAsignar.setVisible(false);
         Callback<TableColumn<Programa, String>, TableCell<Programa, String>> cellFactory = new Callback<TableColumn<Programa, String>, TableCell<Programa, String>>() {
             @Override
             public TableCell<Programa, String> call(final TableColumn<Programa, String> param) {
@@ -158,21 +183,39 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
     @FXML
     private void clicAsignarProgramas(ActionEvent event) {
         if (esEdicion) {
+            boolean confirmacion = Utilidades.mostrarDialogoConfirmacion("Está seguro de querer actualizar las aplicaciones del centro de cómputo", 
+                    "Se actualizaran las aplicaciones del centro de cómputo");
             btnAsignar.setText("Asignar aplicaciones");
-            esEdicion = false;
-            cargarDatosTabla();
-            agregarBotones();
-        } else {
+            if (confirmacion){
+                boolean desinstalacionValida = ProgramaInstaladoDAO.instalarAplicaciones(programasAgregados, equipoSeleccionado.getIdEquipo());
+                boolean instalacionValida = ProgramaInstaladoDAO.desinstalarAplicaciones(programasEliminados, equipoSeleccionado.getIdEquipo());
+                if (desinstalacionValida && instalacionValida){
+                    Utilidades.mostrarAlertaSimple("Las aplicaciones del equipo de cómputo se han actualizado correctamente",
+                            "El equipo de cómputo se han actualizado correctamente", Alert.AlertType.INFORMATION);
+                    programasAgregados.clear();
+                    programasEliminados.clear();
+                    esEdicion = false;
+                    cargarDatosTabla();
+                    agregarBotones();
+                } else {
+                    Utilidades.mostrarAlertaSimple("Error de actualización", 
+                            "Ocurrió un error al actualizar las aplicaciones", 
+                            Alert.AlertType.ERROR);
+                }
+            }
+            
+        } else {//cuando no es edicion cambia el modo a edicion
             esEdicion = true;
             cargarDatosTabla();
             agregarBotonesEdicion();
-            
+
             btnAsignar.setText("Actualizar aplicaciones");
         }
     }
 
     private void agregarBotonesEdicion() {
         colOpciones.setVisible(false);
+        colAsignar.setVisible(true);
     }
 
     @FXML

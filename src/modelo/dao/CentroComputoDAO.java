@@ -66,4 +66,49 @@ public class CentroComputoDAO {
         }
         return ccEncontrados;
     }
+     
+     public static boolean eliminarCC (int idCC){
+        boolean seElimino = false;
+        Connection conexionBD = conexion.abrirConexionBD();
+        if(conexionBD != null){
+            try{
+                String consulta = "DELETE FROM centro_computo WHERE idCentro_Computo = ?";
+                PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
+                sentenciaPreparada.setInt(1, idCC);
+                int filasAfectadas = sentenciaPreparada.executeUpdate();
+                if (filasAfectadas == 1){
+                    seElimino = true;
+                }
+            }catch(SQLException e){
+                 Utilidades.mostrarAlertaSimple("Error", "No hay conexión con la base de datos", 
+                    Alert.AlertType.ERROR);
+                e.printStackTrace();               
+            }
+        }
+        return seElimino;
+    }
+     
+     
+     public static boolean editarCC(String nombreCC, int CCSeleccionado) {
+        boolean seEdito = false;
+        Connection conexionBD = conexion.abrirConexionBD();
+        if(conexionBD != null){
+            try{
+                String consulta = "UPDATE centro_computo SET nombre_centro_computo = ?"
+                        + "WHERE idCentro_Computo = ?";
+                PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
+                sentenciaPreparada.setString(1, nombreCC);
+                sentenciaPreparada.setInt(2, CCSeleccionado);
+                int filasAfectadas = sentenciaPreparada.executeUpdate();
+                if(filasAfectadas == 1){
+                    seEdito = true;
+                }
+            }catch(SQLException e){
+                Utilidades.mostrarAlertaSimple("Error", "No hay conexión con la base de datos", 
+                    Alert.AlertType.ERROR);
+                e.printStackTrace();       
+            }
+        }
+        return seEdito;
+    }
 }

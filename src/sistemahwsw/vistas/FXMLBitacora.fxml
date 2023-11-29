@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/21" fx:controller="sistemahwsw.controllers.BitacoraController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.BitacoraController">
    <children>
       <Label layoutX="138.0" layoutY="14.0" text="Sistema de inventario para el Hardware/Software">
          <font>
@@ -27,8 +26,7 @@
       <TableView fx:id="tvBitacora" layoutX="39.0" layoutY="146.0" prefHeight="186.0" prefWidth="530.0" stylesheets="@../estilos/estilos.css">
         <columns>
           <TableColumn fx:id="colBitacora" prefWidth="75.0" text="Bitácora" />
-          <TableColumn fx:id="colDescripcion" prefWidth="345.5999755859375" text="Descripción" />
-            <TableColumn fx:id="colHerramientas" prefWidth="108.80002441406248" text="Herramientas" />
+          <TableColumn fx:id="colDescripcion" prefWidth="334.4000244140625" text="Descripción" />
         </columns>
       </TableView>
       <Button fx:id="btnRegistrar" layoutX="422.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="143.0" styleClass="boton_generico" stylesheets="@../estilos/estilos.css" text="Regresar" />

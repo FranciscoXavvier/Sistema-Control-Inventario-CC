@@ -77,6 +77,7 @@ public class RegistrarTecnicoController implements Initializable {
             alert.setContentText("Existen campos vacíos o nulos, por favor, completa todos.");
             alert.showAndWait();
             System.out.println("Por favor, completa todos los campos.");
+        
         } else {
             Tecnico tecnico = new Tecnico();
             tecnico.setNumeroPersonal(numero_personal);

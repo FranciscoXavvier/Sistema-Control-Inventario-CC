@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLConsultarProgramasEquipoComputoController">
+<AnchorPane id="AnchorPane" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.FXMLConsultarProgramasEquipoComputoController">
    <children>
       <Pane prefHeight="42.0" prefWidth="530.0" styleClass="pane_login" stylesheets="@../estilos/estilos.css">
          <children>
@@ -26,6 +26,7 @@
           <TableColumn fx:id="colNombre" prefWidth="150.0" text="Nombre de aplicación" />
           <TableColumn fx:id="colEdicion" prefWidth="150.0" text="Edición" />
             <TableColumn fx:id="colOpciones" prefWidth="150.0" text="Opciones" />
+            <TableColumn fx:id="colAsignar" prefWidth="150.0" text="Asignar" visible="false" />
         </columns>
       </TableView>
       <Label layoutX="43.0" layoutY="54.0" text="Listado de Programaes instaladas en el equipo de cómputo" />

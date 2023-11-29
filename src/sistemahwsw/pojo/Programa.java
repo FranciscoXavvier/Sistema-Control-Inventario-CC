@@ -5,6 +5,7 @@
 package sistemahwsw.pojo;
 
 import java.util.Objects;
+import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 
 /**
@@ -12,14 +13,17 @@ import javafx.scene.control.CheckBox;
  * @author super
  */
 public class Programa {
+
     protected int idPrograma;
     protected String nombre;
     protected String version;
     protected String idioma;
     protected String edicion;
+    @FXML
     private CheckBox instalado;
 
     public Programa() {
+        this.instalado = new CheckBox();
     }
 
     public Programa(int idPrograma, String nombre, String version, String idioma, String edicion) {
@@ -28,6 +32,7 @@ public class Programa {
         this.version = version;
         this.idioma = idioma;
         this.edicion = edicion;
+        this.instalado = new CheckBox();
     }
 
     public Programa(int idPrograma, String nombre, String version, String idioma, String edicion, CheckBox instalado) {
@@ -86,7 +91,7 @@ public class Programa {
     public void setInstalado(CheckBox instalado) {
         this.instalado = instalado;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -118,6 +123,11 @@ public class Programa {
             return false;
         }
         return Objects.equals(this.edicion, other.edicion);
+    }
+
+    @Override
+    public String toString() {
+        return "nombre: " + nombre + ", version:" + version + ", edicion:" + edicion;
     }
 
     

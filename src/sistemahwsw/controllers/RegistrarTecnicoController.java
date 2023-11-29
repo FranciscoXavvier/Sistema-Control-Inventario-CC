@@ -67,24 +67,36 @@ public class RegistrarTecnicoController implements Initializable {
         String numero_personal = tf_numero_personal.getText();
         String usuario = tf_usuario.getText();
         String password = tf_contrasena.getText();
-        
-        Tecnico tecnico = new Tecnico();
-        tecnico.setNumeroPersonal(numero_personal);
-        tecnico.setNombre(nombre);
-        tecnico.setApellidoPaterno(apellido_paterno);
-        tecnico.setApellidoMaterno(apellido_materno);
-        tecnico.setUsername(usuario);
-        tecnico.setPassword(password);
-        TecnicoDAO.registrar(tecnico);
 
-        // Las credenciales son inválidas
+        if (nombre.isEmpty() || apellido_paterno.isEmpty() || apellido_materno.isEmpty() || 
+            numero_personal.isEmpty() || usuario.isEmpty() || password.isEmpty()) {
+            
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+             alert.setTitle("Registro no exitoso");
+            alert.setHeaderText("El Técnico no se ha registrado correctamente.");
+            alert.setContentText("Existen campos vacíos o nulos, por favor, completa todos.");
+            alert.showAndWait();
+            System.out.println("Por favor, completa todos los campos.");
+        
+        } else {
+            Tecnico tecnico = new Tecnico();
+            tecnico.setNumeroPersonal(numero_personal);
+            tecnico.setNombre(nombre);
+            tecnico.setApellidoPaterno(apellido_paterno);
+            tecnico.setApellidoMaterno(apellido_materno);
+            tecnico.setUsername(usuario);
+            tecnico.setPassword(password);
+            TecnicoDAO.registrar(tecnico);
+
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Registro exitoso");
             alert.setHeaderText("Técnico registrado correctamente.");
             alert.setContentText("La información se ha registrado correctamente y ahora puedes hacer uso de tu usuario.");
             alert.showAndWait();
-            System.out.println("Inicio de sesión fallido");
+            
        
+        }
+  
     }   
     
 }

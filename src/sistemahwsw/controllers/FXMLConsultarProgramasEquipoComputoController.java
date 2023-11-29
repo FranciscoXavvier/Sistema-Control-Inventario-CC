@@ -109,6 +109,11 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
             tvProgramas.setItems(programasAsignados);
 
         } else {
+            for (int i=0; i<programasBD.size();i++){
+                if (programasAsignados.contains(programasBD.get(i))){
+                    programasBD.get(i).getInstalado().setSelected(true);
+                }
+            }
             tvProgramas.setItems(programasBD);
         }
 
@@ -187,20 +192,30 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
                     "Se actualizaran las aplicaciones del centro de cómputo");
             btnAsignar.setText("Asignar aplicaciones");
             if (confirmacion){
-                boolean desinstalacionValida = ProgramaInstaladoDAO.instalarAplicaciones(programasAgregados, equipoSeleccionado.getIdEquipo());
-                boolean instalacionValida = ProgramaInstaladoDAO.desinstalarAplicaciones(programasEliminados, equipoSeleccionado.getIdEquipo());
-                if (desinstalacionValida && instalacionValida){
-                    Utilidades.mostrarAlertaSimple("Las aplicaciones del equipo de cómputo se han actualizado correctamente",
-                            "El equipo de cómputo se han actualizado correctamente", Alert.AlertType.INFORMATION);
+                boolean listaDesinstalacionVacia = programasEliminados.isEmpty();
+                boolean listaInstalacionVacia = programasAgregados.isEmpty();
+                if (!listaDesinstalacionVacia && !listaInstalacionVacia) {
+                    boolean desinstalacionValida = ProgramaInstaladoDAO.instalarAplicaciones(programasAgregados, equipoSeleccionado.getIdEquipo());
+                    boolean instalacionValida = ProgramaInstaladoDAO.desinstalarAplicaciones(programasEliminados, equipoSeleccionado.getIdEquipo());
+                    if (desinstalacionValida && instalacionValida) {
+                        Utilidades.mostrarAlertaSimple("Las aplicaciones del equipo de cómputo se han actualizado correctamente",
+                                "El equipo de cómputo se han actualizado correctamente", Alert.AlertType.INFORMATION);
+                        programasAgregados.clear();
+                        programasEliminados.clear();
+                        esEdicion = false;
+                        cargarDatosTabla();
+                        agregarBotones();
+                    }else{
+                                                Utilidades.mostrarAlertaSimple("Error de actualización", 
+                            "Ocurrió un error al actualizar las aplicaciones", 
+                            Alert.AlertType.ERROR);
+                            }
+                } else {
                     programasAgregados.clear();
                     programasEliminados.clear();
                     esEdicion = false;
                     cargarDatosTabla();
                     agregarBotones();
-                } else {
-                    Utilidades.mostrarAlertaSimple("Error de actualización", 
-                            "Ocurrió un error al actualizar las aplicaciones", 
-                            Alert.AlertType.ERROR);
                 }
             }
             

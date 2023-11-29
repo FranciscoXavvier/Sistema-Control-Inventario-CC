@@ -23,6 +23,7 @@ public class Programa {
     private CheckBox instalado;
 
     public Programa() {
+        this.instalado = new CheckBox();
     }
 
     public Programa(int idPrograma, String nombre, String version, String idioma, String edicion) {

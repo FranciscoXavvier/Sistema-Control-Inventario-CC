@@ -20,14 +20,14 @@
                </font>
             </Label>
             <Separator layoutX="-2.0" layoutY="41.0" prefHeight="0.0" prefWidth="600.0" />
-            <Button layoutX="289.0" layoutY="340.0" mnemonicParsing="false" onAction="#registrar" prefHeight="25.0" prefWidth="130.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
+            <Button fx:id="btn_registrar" layoutX="289.0" layoutY="340.0" mnemonicParsing="false" onAction="#registrar" prefHeight="25.0" prefWidth="130.0" styleClass="boton_registrar" stylesheets="@../estilos/estilos.css" text="Registrar" textFill="WHITE" />
             <Button fx:id="boton_cancelar" layoutX="433.0" layoutY="340.0" mnemonicParsing="false" onAction="#regresar" prefHeight="25.0" prefWidth="130.0" styleClass="boton_cancelar" stylesheets="@../estilos/estilos.css" text="Cancelar" />
-            <Label layoutX="23.0" layoutY="79.0" text="Rellena la información con los campos requeridos.">
+            <Label fx:id="lb_instrucciones" layoutX="23.0" layoutY="79.0" text="Rellena la información con los campos requeridos.">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Label>
-            <Label layoutX="23.0" layoutY="51.0" text="Registrar Centro de Cómputo.">
+            <Label fx:id="lbTItle" layoutX="23.0" layoutY="51.0" text="Registrar Centro de Cómputo.">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -39,6 +39,7 @@
                   <Image url="@../img/cc.png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_editar" layoutX="289.0" layoutY="340.0" mnemonicParsing="false" onAction="#editar" prefHeight="20.0" prefWidth="130.0" styleClass="boton_editar" stylesheets="@../estilos/estilos.css" text="Editar" />
          </children>
       </Pane>
    </children>

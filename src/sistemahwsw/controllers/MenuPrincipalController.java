@@ -125,8 +125,23 @@ public class MenuPrincipalController implements Initializable {
             stage.show();
         }catch(Exception e){
             e.printStackTrace();
-        }
-        
+        }   
     }
+    
+    @FXML
+    private void clicBitacoras(ActionEvent event){
+        try{
+            Stage stageConsultar = (Stage) boton_cc.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLBitacora.fxml"));
+            Parent root1 = (Parent) loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Menú bitácoras");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }   
+    }
+    
 }
        

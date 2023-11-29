@@ -141,9 +141,7 @@ public class FXMLConsultarProgramasController implements Initializable {
         };
 
         colBotones.setCellFactory(cellFactory);
-
         tvProgramas.getColumns().add(colBotones);
-
     }
     
     private void irAFormularioPrograma(Programa app, FXMLFormularioProgramaController.TipoOperacion operacion){

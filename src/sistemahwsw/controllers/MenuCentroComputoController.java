@@ -5,6 +5,7 @@
  */
 package sistemahwsw.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -26,9 +27,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import modelo.dao.ProgramaDAO;
+
 import modelo.dao.CentroComputoDAO;
-import sistemahwsw.pojo.Programa;
+
 import sistemahwsw.pojo.CentroComputo;
 import sistemahwsw.utilidades.Utilidades;
 
@@ -48,6 +49,7 @@ public class MenuCentroComputoController implements Initializable {
     private TableColumn<?, ?> colId;
     @FXML
     private TableColumn<?, ?> colNombre;
+    private ArrayList<CentroComputo> ccRespuesta;
     
     private ObservableList<CentroComputo> ccBd;
     /** 
@@ -84,7 +86,7 @@ public class MenuCentroComputoController implements Initializable {
 
     public void cargarDatosTabla() {
         ccBd = FXCollections.observableArrayList();
-        ArrayList<CentroComputo> ccRespuesta = CentroComputoDAO.obtenerCentroComputo();
+        ccRespuesta = CentroComputoDAO.obtenerCentroComputo();
         for (CentroComputo cc : ccRespuesta){
             ccBd.add(cc);
         }
@@ -117,13 +119,30 @@ public class MenuCentroComputoController implements Initializable {
                         btnModificar.setPrefWidth(175.19998168945312);
                         btnEliminar.setPrefWidth(175.19998168945312);
                         btnConsultar.setOnAction((ActionEvent event) -> {
-                            System.out.println("a");
+                           CentroComputo seleccion = getTableView().getItems().get(getIndex());
+                            irAFormularioCC(seleccion, RegistrarCentroComputoController.TipoOperacion.CONSULTA);
                         });
                         btnModificar.setOnAction((ActionEvent event) ->{
-                            System.out.println("b");
+                             CentroComputo seleccion = getTableView().getItems().get(getIndex());
+                            irAFormularioCC(seleccion, RegistrarCentroComputoController.TipoOperacion.EDICION);
                         });
                         btnEliminar.setOnAction((ActionEvent event) ->{
-                            System.out.println("c");
+                            CentroComputo seleccion = getTableView().getItems().get(getIndex());
+                            boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Confirmación de eliminación de aplicación", 
+                                    "El programa será eliminado y cualquier equipo de cómputo que se encuentre con la "
+                                            + "aplicación registrada será eliminada ¿Desea continuar con la acción?");
+                            if (confirmarEliminacion){
+                                if(CentroComputoDAO.eliminarCC(seleccion.getIdCentroComputo())){
+                                    Utilidades.mostrarAlertaSimple("Éxito en la operación", 
+                                            "Aplicación eliminado de manera exitosa", 
+                                            Alert.AlertType.INFORMATION);
+                                    cargarDatosTabla();
+                                }else{
+                                    Utilidades.mostrarAlertaSimple("Error en la eliminación del programa", 
+                                            "Hubo un error al momento de eliminar la aplicación, por favor vuelva a intentarlo más tarde", 
+                                            Alert.AlertType.ERROR);
+                                }
+                            }
                         });
                         
                     }
@@ -160,5 +179,22 @@ public class MenuCentroComputoController implements Initializable {
     }
     
     
-    
+     private void irAFormularioCC(CentroComputo app, RegistrarCentroComputoController.TipoOperacion operacion){
+        try {
+            FXMLLoader accesoControlador = 
+                    new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarCentroComputo.fxml"));
+            Parent vista = accesoControlador.load();
+            
+            RegistrarCentroComputoController formulario = 
+                    accesoControlador.getController();
+            Scene escenaFormulario = new Scene(vista);
+            Stage escenario = (Stage) tvCentroComputo.getScene().getWindow();
+            escenario.setScene(escenaFormulario);
+            formulario.setCCBD(ccRespuesta);
+            formulario.inicializarComponentes(app, operacion);
+        } catch (IOException e) {
+            Utilidades.mostrarAlertaSimple("Error", "No se puede mostrar la pantalla de formulario", 
+                    Alert.AlertType.ERROR);
+        }
+    }
 }

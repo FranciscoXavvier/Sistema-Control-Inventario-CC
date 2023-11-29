@@ -8,27 +8,34 @@ package sistemahwsw.pojo;
  *
  * @author super
  */
-public class SistemaOperativo extends Programa{
+public class SistemaOperativo{
+    private int idSistemaOperativo;
+    private String nombre;
+    private String version;
+    private String idioma;
+    private String edicion;
     private String arquitectura;
     private String tipo;
     
     public SistemaOperativo(){
     }
 
-    public SistemaOperativo(String arquitectura, String tipo, int idPrograma, String nombre, String version, String idioma, String edicion) {
-        super(idPrograma, nombre, version, idioma, edicion);
-        this.arquitectura = arquitectura;
-        this.tipo = tipo;
+    public int getIdSistemaOperativo() {
+        return idSistemaOperativo;
     }
 
-    public int getIdPrograma() {
-        return idPrograma;
+    public void setIdSistemaOperativo(int idSistemaOperativo) {
+        this.idSistemaOperativo = idSistemaOperativo;
     }
 
-    public void setIdPrograma(int idPrograma) {
-        this.idPrograma = idPrograma;
+    public String getEdicion() {
+        return edicion;
     }
 
+    public void setEdicion(String edicion) {
+        this.edicion = edicion;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -71,7 +78,29 @@ public class SistemaOperativo extends Programa{
 
     @Override
     public String toString() {
-        return nombre + " " + version + " " + arquitectura + " " + tipo;
+        return nombre + " " + version + " " + arquitectura + " " + edicion;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + this.idSistemaOperativo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final SistemaOperativo other = (SistemaOperativo) obj;
+        return this.idSistemaOperativo == other.idSistemaOperativo;
     }
     
     

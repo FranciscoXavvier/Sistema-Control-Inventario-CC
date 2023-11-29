@@ -21,13 +21,13 @@ public class EquipoComputo {
     private String codigoDeBarras;
     private String fila;
     private String columna;
-    private ArrayList<Programa> Programaes;
+    private ArrayList<Programa> Programas;
     private SistemaOperativo sistemaOperativoInstalado;
 
     public EquipoComputo() {
     }
 
-    public EquipoComputo(int idEquipo, int idCentroComputo, String procesador, String tarjetaMadre, String memoriaRam, String almacenamiento, String lectorOptico, String codigoDeBarras, String fila, String columna, ArrayList<Programa> Programaes, SistemaOperativo sistemaOperativoInstalado) {
+    public EquipoComputo(int idEquipo, int idCentroComputo, String procesador, String tarjetaMadre, String memoriaRam, String almacenamiento, String lectorOptico, String codigoDeBarras, String fila, String columna, ArrayList<Programa> Programas, SistemaOperativo sistemaOperativoInstalado) {
         this.idEquipo = idEquipo;
         this.idCentroComputo = idCentroComputo;
         this.procesador = procesador;
@@ -38,7 +38,7 @@ public class EquipoComputo {
         this.codigoDeBarras = codigoDeBarras;
         this.fila = fila;
         this.columna = columna;
-        this.Programaes = Programaes;
+        this.Programas = Programas;
         this.sistemaOperativoInstalado = sistemaOperativoInstalado;
     }
 
@@ -123,11 +123,11 @@ public class EquipoComputo {
     }
 
     public ArrayList<Programa> getProgramaes() {
-        return Programaes;
+        return Programas;
     }
 
-    public void setProgramaes(ArrayList<Programa> Programaes) {
-        this.Programaes = Programaes;
+    public void setProgramaes(ArrayList<Programa> Programas) {
+        this.Programas = Programas;
     }
 
     public SistemaOperativo getSistemaOperativoInstalado() {
@@ -136,6 +136,11 @@ public class EquipoComputo {
 
     public void setSistemaOperativoInstalado(SistemaOperativo sistemaOperativoInstalado) {
         this.sistemaOperativoInstalado = sistemaOperativoInstalado;
+    }
+
+    @Override
+    public String toString() {
+        return "id:" + idEquipo + ", fila:" + fila + ", columna:" + columna;
     }
     
     

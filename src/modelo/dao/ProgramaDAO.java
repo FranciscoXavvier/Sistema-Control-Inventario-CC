@@ -19,7 +19,7 @@ import sistemahwsw.utilidades.Utilidades;
  * @author super
  */
 public class ProgramaDAO {
-    private static ConexionBD conexion = ConexionBD.getInstancia();
+    private static final ConexionBD conexion = ConexionBD.getInstancia();
     
     public static ArrayList<Programa> obtenerProgramas() {
         ArrayList<Programa> ProgramasEncontradas = new ArrayList<>();
@@ -79,6 +79,7 @@ public class ProgramaDAO {
     //Hacer que se eliminen las Programaes de las computadoras instaladas
     public static boolean eliminarPrograma (int idPrograma){
         boolean seElimino = false;
+        ProgramaInstaladoDAO.eliminarECRelacionados(idPrograma);
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try{

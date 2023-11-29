@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="SistemaHWSW">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/SistemaHWSW.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

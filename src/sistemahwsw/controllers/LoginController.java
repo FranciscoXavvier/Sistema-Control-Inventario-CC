@@ -91,13 +91,12 @@ public class LoginController implements Initializable {
     
     public void registrar(ActionEvent event) throws Exception{
         try{
-            Stage stageLogin = (Stage) boton_registrar_tecnico.getScene().getWindow();
- 
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarTecnico.fxml"));
-                Parent root1 = (Parent) fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root1));  
-                stage.show();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarTecnico.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            Scene escena = new Scene(root1);
+            stage.setScene(escena);
+            stage.show();
         }catch(Exception e){
             e.printStackTrace();
         }

@@ -46,6 +46,8 @@ public class RegistrarTecnicoController implements Initializable {
     
     private TecnicoDAO tecnicoDAO;
     private ConexionBD connection = ConexionBD.getInstancia(); // Conexión a la base de datos
+    @FXML
+    private TextField tf_cpnfirmar_contrasena;
 
     public RegistrarTecnicoController() {
         Connection conexion = connection.abrirConexionBD();
@@ -56,6 +58,7 @@ public class RegistrarTecnicoController implements Initializable {
         // TODO
     }    
     
+    @FXML
      public void registrar(ActionEvent event) throws Exception {               
         
         String nombre=tf_nombre.getText();

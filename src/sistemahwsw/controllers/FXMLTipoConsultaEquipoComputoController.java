@@ -24,7 +24,7 @@ import sistemahwsw.pojo.EquipoComputo;
  */
 public class FXMLTipoConsultaEquipoComputoController implements Initializable {
 
-    EquipoComputo equipoSeleccionado;
+    private EquipoComputo equipoSeleccionado;
     /**
      * Initializes the controller class.
      */
@@ -35,6 +35,25 @@ public class FXMLTipoConsultaEquipoComputoController implements Initializable {
 
     @FXML
     private void clickConsultarPerifericos(ActionEvent event) {
+        try{
+            FXMLLoader accesoControlador = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLConsultarEquipoComputo.fxml"));
+            Parent vista = accesoControlador.load();
+
+            FXMLConsultarEquipoComputoController controlador = accesoControlador.getController();
+
+            controlador.configurarEquipoSeleccionado(equipoSeleccionado);
+            
+            Node origen = (Node) event.getSource();
+            Stage escenarioActual = (Stage) origen.getScene().getWindow();
+            Scene escenaConsultarEquipoComputo = new Scene(vista);
+            escenarioActual.setScene(escenaConsultarEquipoComputo);
+            escenarioActual.setTitle("Consultando periféricos");
+            
+            controlador.inicializarDatos();
+            
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     @FXML
@@ -51,6 +70,7 @@ public class FXMLTipoConsultaEquipoComputoController implements Initializable {
             Stage escenarioActual = (Stage) origen.getScene().getWindow();
             Scene escenaConsultarProgramas = new Scene (vista);
             escenarioActual.setScene(escenaConsultarProgramas);
+            escenarioActual.setTitle("Consultando programas instalados");
             
             controlador.configurarTabla();
             controlador.cargarDatosTabla();
@@ -67,7 +87,7 @@ public class FXMLTipoConsultaEquipoComputoController implements Initializable {
         escenaActual.close();
     }
 
-    void asignarComputadora(EquipoComputo seleccion) {
+    public void asignarComputadora(EquipoComputo seleccion) {
         equipoSeleccionado = seleccion;
     }
     

@@ -4,6 +4,8 @@
  */
 package sistemahwsw.pojo;
 
+import java.util.Objects;
+
 /**
  *
  * @author super
@@ -11,15 +13,10 @@ package sistemahwsw.pojo;
 public class Periferico {
     private String marca;
     private String modelo;
-    private String tipoPeriferico;
+    private TipoPeriferico tipo;
+    private String codigoDeBarras;
 
     public Periferico() {
-    }
-
-    public Periferico(String marca, String modelo, String tipoPeriferico) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.tipoPeriferico = tipoPeriferico;
     }
 
     public String getMarca() {
@@ -38,12 +35,41 @@ public class Periferico {
         this.modelo = modelo;
     }
 
-    public String getTipoPeriferico() {
-        return tipoPeriferico;
+    public TipoPeriferico getTipo() {
+        return tipo;
     }
 
-    public void setTipoPeriferico(String tipoPeriferico) {
-        this.tipoPeriferico = tipoPeriferico;
+    public void setTipo(TipoPeriferico tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getCodigoDeBarras() {
+        return codigoDeBarras;
+    }
+
+    public void setCodigoDeBarras(String codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Periferico other = (Periferico) obj;
+        return Objects.equals(this.tipo, other.tipo);
     }
     
     

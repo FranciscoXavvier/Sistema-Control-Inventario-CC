@@ -27,8 +27,10 @@ public class ConexionBD {
     private static String urlConexion = "jdbc:mysql://"+ip+":"+puerto
             +"/"+bd+"?allowPublicKeyRetrieval=true&useSSL=false";
     
+
     private static String usuario = "root";
     private static String password = "Traker117!";
+
     private static ConexionBD instanciaDeConexion = new ConexionBD();
     
     

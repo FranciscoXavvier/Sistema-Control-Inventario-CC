@@ -26,8 +26,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import modelo.dao.CentroComputoDAO;
 import modelo.dao.ProgramaDAO;
 import modelo.dao.EquipoComputoDAO;
+import sistemahwsw.pojo.CentroComputo;
 import sistemahwsw.pojo.Programa;
 import sistemahwsw.pojo.EquipoComputo;
 import sistemahwsw.utilidades.Utilidades;
@@ -62,14 +64,17 @@ public class FXMLMenuEquipoComputoController implements Initializable {
     @FXML
     private void clicRegistrar(ActionEvent event) {
         try{
-            FXMLLoader accesoControlador = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLTipoRegistroHardware.fxml"));
+            FXMLLoader accesoControlador = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml"));
             Parent vista = accesoControlador.load();
             
-            FXMLTipoRegistroHardwareController menu = accesoControlador.getController();
+            FXMLRegistrarEquipoComputoController registro = accesoControlador.getController();
             Scene escena = new Scene(vista);
             Stage escenario = (Stage) tvEquipoComputo.getScene().getWindow();
             
-            menu.inicializaridCC(idCentroComputo);
+            registro.inicializarIdCC(idCentroComputo);
+            registro.setOperacion(FXMLRegistrarEquipoComputoController.TipoOperacion.REGISTRO);
+            registro.limitarTexto();
+            registro.inicializarSistemasOperativos();
             escenario.setScene(escena);
         }catch(Exception e){
             e.printStackTrace();
@@ -134,35 +139,52 @@ public class FXMLMenuEquipoComputoController implements Initializable {
 
                                 Stage nuevoEscenario = new Stage();
                                 Scene escenarioConsulta = new Scene(vista);
+                                nuevoEscenario.setTitle("Seleccionar tipo de consulta");
+                                        
                                 nuevoEscenario.setScene(escenarioConsulta);
                                 nuevoEscenario.initModality(Modality.APPLICATION_MODAL);
-                                nuevoEscenario.showAndWait();                                
+                                nuevoEscenario.showAndWait();              
                             }catch(IOException ex){
                                 ex.printStackTrace();
                             }
                         });
                         btnModificar.setOnAction((ActionEvent event) ->{
                             EquipoComputo seleccion = getTableView().getItems().get(getIndex());
-                            System.out.println("b");
+                            try {
+                                FXMLLoader accesoControlador = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLRegistrarEquipoComputo.fxml"));
+                                Parent vista = accesoControlador.load();
+
+                                FXMLRegistrarEquipoComputoController edicion = accesoControlador.getController();
+                                Scene escena = new Scene(vista);
+                                Stage escenario = (Stage) tvEquipoComputo.getScene().getWindow();
+
+                                edicion.inicializarIdCC(idCentroComputo);
+                                edicion.setOperacion(FXMLRegistrarEquipoComputoController.TipoOperacion.EDICION);
+                                edicion.limitarTexto();
+                                edicion.inicializarSistemasOperativos();
+                                edicion.setEquipoComputo(seleccion);
+                                edicion.inicializarEquipoComputo();
+                                escenario.setScene(escena);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         });
                         btnEliminar.setOnAction((ActionEvent event) ->{
                             EquipoComputo seleccion = getTableView().getItems().get(getIndex());
-                            System.out.println("c");
-//                            boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Confirmación de eliminación de aplicación", 
-//                                    "El programa será eliminado y cualquier equipo de cómputo que se encuentre con la "
-//                                            + "aplicación registrada será eliminada ¿Desea continuar con la acción?");
-//                            if (confirmarEliminacion){
-//                                if(ProgramaDAO.eliminarPrograma(seleccion.getIdPrograma())){
-//                                    Utilidades.mostrarAlertaSimple("Éxito en la operación", 
-//                                            "Aplicación eliminado de manera exitosa", 
-//                                            Alert.AlertType.INFORMATION);
-//                                    cargarDatosTabla();
-//                                }else{
-//                                    Utilidades.mostrarAlertaSimple("Error en la eliminación del programa", 
-//                                            "Hubo un error al momento de eliminar la aplicación, por favor vuelva a intentarlo más tarde", 
-//                                            Alert.AlertType.ERROR);
-//                                }
-//                            }
+                            boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Ventana de confirmación",
+                                    "¿Está seguro que desea eliminar el equipo de cómputo?");
+                            if (confirmarEliminacion) {
+                                if (EquipoComputoDAO.eliminarEquipoComputoPorID(seleccion.getIdEquipo())) {
+                                    Utilidades.mostrarAlertaSimple("Éxito en la operación",
+                                            "Equipo de cómputo eliminado de manera exitosa",
+                                            Alert.AlertType.INFORMATION);
+                                    cargarDatosTabla();
+                                } else {
+                                    Utilidades.mostrarAlertaSimple("Error en la eliminación del programa",
+                                            "Hubo un error al momento de eliminar la aplicación, por favor vuelva a intentarlo más tarde",
+                                            Alert.AlertType.ERROR);
+                                }
+                            }
                         });
                         
                     }

@@ -22,7 +22,7 @@ import sistemahwsw.utilidades.Utilidades;
 public class SistemaOperativoDAO {
 private static ConexionBD conexion = ConexionBD.getInstancia();
     
-    public static ArrayList<SistemaOperativo> obtenerProgramaes() {
+    public static ArrayList<SistemaOperativo> obtenerSistemasOperativos() {
         ArrayList<SistemaOperativo> osEncontrados = new ArrayList<>();
         Connection conexionBD = conexion.abrirConexionBD();
         if (conexionBD != null){
@@ -32,10 +32,11 @@ private static ConexionBD conexion = ConexionBD.getInstancia();
                 ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();
                 while(resultadoConsulta.next()){
                     SistemaOperativo osAux = new SistemaOperativo();
-                    osAux.setIdPrograma(resultadoConsulta.getInt("idSistema_Operativo"));
+                    osAux.setIdSistemaOperativo(resultadoConsulta.getInt("idSistema_Operativo"));
                     osAux.setVersion(resultadoConsulta.getString("version"));
                     osAux.setNombre(resultadoConsulta.getString("nombre"));
                     osAux.setArquitectura(resultadoConsulta.getString("arquitectura"));
+                    osAux.setEdicion(resultadoConsulta.getString("edicion"));
                     osAux.setTipo(resultadoConsulta.getString("tipo"));
                     osEncontrados.add(osAux);
                 }

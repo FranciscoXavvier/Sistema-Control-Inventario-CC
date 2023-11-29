@@ -145,9 +145,9 @@ public class ProgramaDAO {
                         + "INNER JOIN \n"
                         + "	Equipo_Computo ec \n"
                         + "ON \n"
-                        + "	pins.CPU_idCPU = ec.idCPU\n"
+                        + "	pins.Equipo_Computo_idEquipo_Computo = ec.idEquipo_Computo\n"
                         + "WHERE\n"
-                        + "	ec.idCPU = ?";
+                        + "	ec.idEquipo_Computo = ?";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setInt(1, idEquipoComputo);
                 ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();

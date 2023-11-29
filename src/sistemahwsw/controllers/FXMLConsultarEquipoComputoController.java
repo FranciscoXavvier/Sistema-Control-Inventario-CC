@@ -88,6 +88,7 @@ public class FXMLConsultarEquipoComputoController implements Initializable {
             stageActual.setTitle("Registrar periférico");
             
             controlador.inicializarDatos(null, FXMLFormularioPerifericoController.TipoOperacion.REGISTRO, seleccionEc);
+            controlador.inicializarPerifericos(perifericosRespuesta);
             stageActual.setScene(vistaRegistro);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -160,8 +161,6 @@ public class FXMLConsultarEquipoComputoController implements Initializable {
                                 escenarioActual.setTitle("Consulta periférico");
                                 
                                 escenarioActual.setScene(escenarioConsulta);
-                                escenarioActual.initModality(Modality.APPLICATION_MODAL);
-                                escenarioActual.showAndWait();
                             } catch (IOException ex) {
                                 ex.printStackTrace();
                             }
@@ -178,6 +177,7 @@ public class FXMLConsultarEquipoComputoController implements Initializable {
                                 escenario.setTitle("Modificar periférico");
 
                                 vistaEdicion.inicializarDatos(seleccion, FXMLFormularioPerifericoController.TipoOperacion.EDICION, seleccionEc);
+                                vistaEdicion.inicializarPerifericos(perifericosRespuesta);
                                 escenario.setScene(escena);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -188,9 +188,9 @@ public class FXMLConsultarEquipoComputoController implements Initializable {
                             boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Ventana de confirmación",
                                     "¿Está seguro que desea eliminar el periférico?");
                             if (confirmarEliminacion) {
-                                if (PerifericoDAO.eliminarPerifericoPorCodigoDeBarras(seleccion.getCodigoDeBarras())) {
+                                if (PerifericoDAO.eliminarPerifericoPorId(seleccion.getIdPeriferico())) {
                                     Utilidades.mostrarAlertaSimple("Éxito en la operación",
-                                            "Equipo de cómputo eliminado de manera exitosa",
+                                            "periférico eliminado de manera exitosa",
                                             Alert.AlertType.INFORMATION);
                                     cargarDatosTabla();
                                 } else {

@@ -37,7 +37,6 @@ private static ConexionBD conexion = ConexionBD.getInstancia();
                     osAux.setNombre(resultadoConsulta.getString("nombre"));
                     osAux.setArquitectura(resultadoConsulta.getString("arquitectura"));
                     osAux.setEdicion(resultadoConsulta.getString("edicion"));
-                    osAux.setTipo(resultadoConsulta.getString("tipo"));
                     osEncontrados.add(osAux);
                 }
             }catch(SQLException e){

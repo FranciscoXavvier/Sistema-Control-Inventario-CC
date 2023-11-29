@@ -11,10 +11,12 @@ import java.util.Objects;
  * @author super
  */
 public class Periferico {
+    private int idPeriferico;
     private String marca;
     private String modelo;
     private TipoPeriferico tipo;
     private String codigoDeBarras;
+    private int equipoComputo;
 
     public Periferico() {
     }
@@ -51,6 +53,22 @@ public class Periferico {
         this.codigoDeBarras = codigoDeBarras;
     }
 
+    public int getEquipoComputo() {
+        return equipoComputo;
+    }
+
+    public void setEquipoComputo(int equipoComputo) {
+        this.equipoComputo = equipoComputo;
+    }   
+
+    public int getIdPeriferico() {
+        return idPeriferico;
+    }
+
+    public void setIdPeriferico(int idPeriferico) {
+        this.idPeriferico = idPeriferico;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -69,7 +87,7 @@ public class Periferico {
             return false;
         }
         final Periferico other = (Periferico) obj;
-        return Objects.equals(this.tipo, other.tipo);
+        return this.idPeriferico == other.idPeriferico;
     }
     
     

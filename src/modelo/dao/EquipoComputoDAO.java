@@ -54,7 +54,7 @@ public class EquipoComputoDAO {
             while(resultado.next()){
                 EquipoComputo ecAux = new EquipoComputo();
                 SistemaOperativo osAux = new SistemaOperativo();
-                ecAux.setIdEquipo(resultado.getInt("idCPU"));
+                ecAux.setIdEquipo(resultado.getInt("idEquipo_Computo"));
                 ecAux.setProcesador(resultado.getString("procesador"));
                 ecAux.setTarjetaMadre(resultado.getString("tarjeta_madre"));
                 ecAux.setMemoriaRam(resultado.getString("memoria_ram"));
@@ -81,7 +81,7 @@ public class EquipoComputoDAO {
         boolean seEliminoEquipo = false;
         ProgramaInstaladoDAO.eliminarAplicacionesRelacionadas(idEquipoComputo);
         try (Connection connection = conexionBD.abrirConexionBD()){
-            String consulta = "DELETE FROM Equipo_Computo WHERE idCPU = ?";
+            String consulta = "DELETE FROM Equipo_Computo WHERE idEquipo_Computo = ?";
             PreparedStatement sentenciaPreparada = connection.prepareStatement(consulta);
             sentenciaPreparada.setInt(1, idEquipoComputo);
             int resultado = sentenciaPreparada.executeUpdate();
@@ -102,7 +102,7 @@ public class EquipoComputoDAO {
         try ( Connection connection = conexionBD.abrirConexionBD()) {
             String consulta = "UPDATE equipo_computo SET Sistema_Operativo_idSistema_Operativo = ?, "
                     + "procesador = ?, tarjeta_madre = ?, memoria_ram = ?, almacenamiento = ?,"
-                    + "lector_optico = ?, codigo_de_barras = ?, fila = ?, columna = ? WHERE idCPU = ?";
+                    + "lector_optico = ?, codigo_de_barras = ?, fila = ?, columna = ? WHERE idEquipo_Computo = ?";
             PreparedStatement sentenciaPreparada = connection.prepareStatement(consulta);
             sentenciaPreparada.setInt(1, ecNuevo.getSistemaOperativoInstalado().getIdSistemaOperativo());
             sentenciaPreparada.setString(2, ecNuevo.getProcesador());

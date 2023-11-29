@@ -21,7 +21,7 @@ class ProgramaInstaladoDAO {
     public static boolean eliminarAplicacionesRelacionadas(int idEquipoComputo) {
         boolean seEliminoEquipoComputo = false;
         try(Connection connection = conexion.abrirConexionBD()){
-            String consulta = "DELETE FROM programa_instalado WHERE CPU_idCPU = ?";
+            String consulta = "DELETE FROM Programa_Instalado WHERE idEquipo_Computo = ?";
             PreparedStatement consultaPreparada = connection.prepareStatement(consulta);
             consultaPreparada.setInt(1, idEquipoComputo);
             int filasAfectadas = consultaPreparada.executeUpdate();
@@ -41,7 +41,7 @@ class ProgramaInstaladoDAO {
     public static boolean eliminarECRelacionados(int idPrograma) {
         boolean seEliminoEquipoComputo = false;
         try(Connection connection = conexion.abrirConexionBD()){
-            String consulta = "DELETE FROM programa_instalado WHERE Programa_idPrograma = ?";
+            String consulta = "DELETE FROM Programa_Instalado WHERE Programa_idPrograma = ?";
             PreparedStatement consultaPreparada = connection.prepareStatement(consulta);
             consultaPreparada.setInt(1, idPrograma);
             int filasAfectadas = consultaPreparada.executeUpdate();

@@ -45,7 +45,8 @@ public class PerifericoDAO {
     public static ArrayList<Periferico> recuperarPerifericosPorIDEC(int idEc){
         ArrayList <Periferico> perifericosRecuperados = new ArrayList<>();
         try ( Connection conexion = conexionBD.abrirConexionBD()) {
-            String consulta = "SELECT periferico.marca, \n"
+            String consulta = "SELECT periferico.idPeriferico, "
+                    + "periferico.marca, \n"
                     + "	periferico.modelo, \n"
                     + "	periferico.codigo_de_barras,\n"
                     + "	tipo_periferico.idTipo_Periferico,\n"
@@ -63,11 +64,14 @@ public class PerifericoDAO {
             ResultSet resultadoConsulta = consultaPreparada.executeQuery();
             while (resultadoConsulta.next()) {
                 Periferico perifericoAux= new Periferico();
+                perifericoAux.setEquipoComputo(idEc);
+                perifericoAux.setIdPeriferico(resultadoConsulta.getInt("idPeriferico"));
+                perifericoAux.setMarca(resultadoConsulta.getString("marca"));
                 perifericoAux.setModelo(resultadoConsulta.getString("modelo"));
                 perifericoAux.setCodigoDeBarras(resultadoConsulta.getString("codigo_de_barras"));
                 
                 TipoPeriferico tipo = new TipoPeriferico();
-                tipo.setIdTipoPeriferico(resultadoConsulta.getInt("id_Tipo_Periferico"));
+                tipo.setIdTipoPeriferico(resultadoConsulta.getInt("idTipo_Periferico"));
                 tipo.setTipoPeriferico(resultadoConsulta.getString("tipo_periferico"));
                         
                 perifericoAux.setTipo(tipo);
@@ -106,9 +110,44 @@ public class PerifericoDAO {
         return seRegistro;
     }    
     
-    public static boolean
+    public static boolean editarPeriferico(Periferico nuevoPeriferico, Periferico perifericoAEditar){
+        boolean seEdito = false;
+        try(Connection conexion = conexionBD.abrirConexionBD()){
+            String consulta = "UPDATE periferico SET Tipo_Periferico_idTipo_Periferico = ?, "
+                    + "marca = ?, modelo = ?, codigo_de_barras = ? WHERE idPeriferico = ?";
+            PreparedStatement consultaPreparada = conexion.prepareStatement(consulta);
+            consultaPreparada.setInt(1, nuevoPeriferico.getTipo().getIdTipoPeriferico());
+            consultaPreparada.setString(2, nuevoPeriferico.getMarca());
+            consultaPreparada.setString(3, nuevoPeriferico.getModelo());
+            consultaPreparada.setString(4, nuevoPeriferico.getCodigoDeBarras());
+            consultaPreparada.setInt(5, perifericoAEditar.getIdPeriferico());
+            int filasAfectadas = consultaPreparada.executeUpdate();
+            if (filasAfectadas >0){
+                seEdito = true;
+            }
+        } catch  (SQLException ex){
+            Utilidades.mostrarAlertaSimple("Error", "No hay conexión con la base de datos",
+                    Alert.AlertType.ERROR);
+            ex.printStackTrace();         
+        }
+        return seEdito;        
+    }
     
-    public static boolean eliminarPerifericoPorCodigoDeBarras(String codigoDeBarras) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public static boolean eliminarPerifericoPorId(int idPeriferico) {
+        boolean seElimino = false;
+        try(Connection conexion = conexionBD.abrirConexionBD()){
+            String consulta = "DELETE FROM periferico WHERE idPeriferico = ?" ;
+            PreparedStatement consultaPreparada = conexion.prepareStatement(consulta);
+            consultaPreparada.setInt(1, idPeriferico);
+            int filasAfectadas = consultaPreparada.executeUpdate();
+            if (filasAfectadas > 0){
+                seElimino = true;
+            }
+        } catch  (SQLException ex){
+            Utilidades.mostrarAlertaSimple("Error", "No hay conexión con la base de datos",
+                    Alert.AlertType.ERROR);
+            ex.printStackTrace();         
+        }        
+        return seElimino;
     }
 }

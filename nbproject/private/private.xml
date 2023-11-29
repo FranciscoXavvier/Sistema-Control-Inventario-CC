@@ -12,13 +12,20 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/LoginController.java</file>
             <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/FXMLRegistrarEquipoComputoController.java</file>
-            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/utilidades/Utilidades.java</file>
-            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/modelo/dao/EquipoComputoDAO.java</file>
-            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/conexion/ConexionBD.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/modelo/dao/SistemaOperativoDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/modelo/dao/ProgramaInstaladoDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/pojo/Periferico.java</file>
             <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/FXMLMenuEquipoComputoController.java</file>
-            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/RegistrarTecnicoController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/FXMLFormularioPerifericoController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/LoginController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/modelo/dao/TecnicoDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/modelo/dao/PerifericoDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/conexion/ConexionBD.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/modelo/dao/ProgramaDAO.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/FXMLTipoConsultaEquipoComputoController.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/pojo/TipoPeriferico.java</file>
+            <file>file:/C:/Users/super/Documents/escuelini/7mo/software/proyecto/Sistema-Control-Inventario-CC/src/sistemahwsw/controllers/FXMLConsultarEquipoComputoController.java</file>
         </group>
     </open-files>
 </project-private>

@@ -28,7 +28,7 @@ public class ConexionBD {
             +"/"+bd+"?allowPublicKeyRetrieval=true&useSSL=false";
     
     private static String usuario = "root";
-    private static String password = "root";
+    private static String password = "Traker117!";
     private static ConexionBD instanciaDeConexion = new ConexionBD();
     
     

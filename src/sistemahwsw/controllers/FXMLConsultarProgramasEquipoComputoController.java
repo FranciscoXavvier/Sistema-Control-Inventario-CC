@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -52,7 +53,7 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
     private ArrayList<Programa> programasAgregados = new ArrayList<>();
     private ArrayList<Programa> programasEliminados = new ArrayList<>();
     
-    private ObservableList<Programa> programasAsignados;
+    private ObservableList<Programa> programasAsignados; 
     private ObservableList<Programa> programasBD;
     private ArrayList<Programa> resultadoProgramasAsignados;
     private ArrayList<Programa> resultadoProgramasBD;
@@ -79,23 +80,6 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
         colEdicion.setCellValueFactory(new PropertyValueFactory("edicion"));
         colAsignar.setCellValueFactory(new PropertyValueFactory("instalado"));
         recuperarProgramasBD();
-        for (Programa p:programasBD){
-            p.getInstalado().selectedProperty().addListener(new ChangeListener<Boolean>() {
-                public void changed(ObservableValue<? extends Boolean> ov,
-                        Boolean old_val, Boolean new_val) {
-                    if (new_val){
-                        programasEliminados.remove(p);
-                        programasAgregados.add(p);
-                        System.out.println("Programa agregado: " + p);
-                    }else{
-                        programasAgregados.remove(p);
-                        programasEliminados.add(p);
-                        System.out.println("Programa eliminado: " + p);
-                    }
-                }
-
-            });
-        }
         agregarBotones();
     }
 
@@ -109,11 +93,6 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
             tvProgramas.setItems(programasAsignados);
 
         } else {
-            for (int i=0; i<programasBD.size();i++){
-                if (programasAsignados.contains(programasBD.get(i))){
-                    programasBD.get(i).getInstalado().setSelected(true);
-                }
-            }
             tvProgramas.setItems(programasBD);
         }
 
@@ -194,7 +173,7 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
             if (confirmacion){
                 boolean listaDesinstalacionVacia = programasEliminados.isEmpty();
                 boolean listaInstalacionVacia = programasAgregados.isEmpty();
-                if (!listaDesinstalacionVacia && !listaInstalacionVacia) {
+                if (!listaDesinstalacionVacia || !listaInstalacionVacia) {
                     boolean desinstalacionValida = ProgramaInstaladoDAO.instalarAplicaciones(programasAgregados, equipoSeleccionado.getIdEquipo());
                     boolean instalacionValida = ProgramaInstaladoDAO.desinstalarAplicaciones(programasEliminados, equipoSeleccionado.getIdEquipo());
                     if (desinstalacionValida && instalacionValida) {
@@ -235,6 +214,54 @@ public class FXMLConsultarProgramasEquipoComputoController implements Initializa
 
     @FXML
     private void clicVolver(ActionEvent event) {
+                FXMLLoader accesoControlador = new FXMLLoader(getClass().getResource("/sistemahwsw/vistas/FXMLTipoConsultaEquipoComputo.fxml"));
+        try {
+            Parent vista = accesoControlador.load();
+
+            FXMLTipoConsultaEquipoComputoController controlador = accesoControlador.getController();
+            controlador.asignarComputadora(equipoSeleccionado);
+
+            Node origen = (Node) event.getSource();
+            Stage stageActual = (Stage) origen.getScene().getWindow();
+            Scene vistaTipoConsulta = new Scene(vista);
+            
+            stageActual.setTitle("Seleccionar tipo de consulta");
+            stageActual.setScene(vistaTipoConsulta);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
+    
+    public void cambiarListenerCheckBox() {
+        for (Programa p : programasBD) {
+            p.getInstalado().selectedProperty().addListener(new ChangeListener<Boolean>() {
+                public void changed(ObservableValue<? extends Boolean> ov,
+                        Boolean old_val, Boolean new_val) {
+                    if (new_val) {
+                        programasEliminados.remove(p);
+                        
+                        if(!programasAsignados.contains(p)){
+                            programasAgregados.add(p);
+                            System.out.println("Programa agregado: " + p);
+                        }
+                        
+                    } else {
+                        programasAgregados.remove(p);
+                        programasEliminados.add(p);
+                        System.out.println("Programa eliminado: " + p);
+                    }
+                }
+
+            });
+        }
+    }
+    
+    public void marcarAplicacionesInstaladas(){
+        for (int i = 0; i < programasBD.size(); i++) {
+            if (programasAsignados.contains(programasBD.get(i))) {
+                programasBD.get(i).getInstalado().setSelected(true);
+            }
+        }
+    }
 }

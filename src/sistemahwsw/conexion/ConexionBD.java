@@ -29,7 +29,7 @@ public class ConexionBD {
     
 
     private static String usuario = "root";
-    private static String password = "Traker117!";
+    private static String password = "root";
 
     private static ConexionBD instanciaDeConexion = new ConexionBD();
     

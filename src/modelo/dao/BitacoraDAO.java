@@ -25,7 +25,7 @@ public class BitacoraDAO {
 
     public static Bitacora registrar(String descripcion){
         try (Connection connection = conexion.abrirConexionBD()){
-            String query = "INSERT INTO `SistemaControlHardwareSoftware`.`Bitacora` (`descripcion`) VALUES (?)";
+            String query = "INSERT INTO `SistemaControlHardwareSoftware`.`bitacora` (`descripcion`) VALUES (?)";
             PreparedStatement statement = connection.prepareStatement(query);
 
             statement.setString(1, descripcion);
@@ -41,7 +41,7 @@ public class BitacoraDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if (conexionBD != null){
             try {
-                String consulta = "SELECT idBitacora, descripcion FROM Bitacora";
+                String consulta = "SELECT idBitacora, descripcion FROM bitacora";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 ResultSet resultadoConsulta = sentenciaPreparada.executeQuery();
                 while(resultadoConsulta.next()){
@@ -68,7 +68,7 @@ public class BitacoraDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try{
-                String consulta = "DELETE FROM Bitacora WHERE idBitacora = ?";
+                String consulta = "DELETE FROM bitacora WHERE idBitacora = ?";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setInt(1, idBitacora);
                 int filasAfectadas = sentenciaPreparada.executeUpdate();

@@ -2,11 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="422.0" prefWidth="530.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sistemahwsw.controllers.MenuPrincipalController">
@@ -64,9 +66,13 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Label fx:id="lbl_bienvenido" layoutX="25.0" layoutY="94.0" text="Label" />
+      <Label fx:id="lbl_bienvenido" layoutX="68.0" layoutY="53.0" text="Label" />
       <Separator layoutX="1.0" layoutY="84.0" prefHeight="3.0" prefWidth="530.0" />
-      <Label fx:id="lbl_bienvenido1" layoutX="79.0" layoutY="53.0" text="Editar perfil" />
       <Separator layoutX="213.0" layoutY="85.0" orientation="VERTICAL" prefHeight="338.0" prefWidth="3.0" />
+      <ScrollPane layoutX="240.0" layoutY="107.0" pannable="true" prefHeight="241.0" prefWidth="254.0">
+         <content>
+            <VBox fx:id="vBoxComputadoras" prefHeight="550.0" prefWidth="500.0" />
+         </content>
+      </ScrollPane>
     </children>
 </AnchorPane>

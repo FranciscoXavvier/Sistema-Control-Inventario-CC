@@ -71,7 +71,6 @@ public class ConsultarTecnicoController implements Initializable {
             
             FXMLEditarTecnicoController controlador1 = (FXMLEditarTecnicoController) fxmlLoader.getController();
             controlador1.parametros(miUsuario.getUsername(), this);
-            stage.showAndWait();
         }catch(Exception e){
             e.printStackTrace();
         }

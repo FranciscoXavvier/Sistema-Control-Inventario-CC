@@ -128,18 +128,17 @@ public class MenuCentroComputoController implements Initializable {
                         });
                         btnEliminar.setOnAction((ActionEvent event) ->{
                             CentroComputo seleccion = getTableView().getItems().get(getIndex());
-                            boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Confirmación de eliminación de aplicación", 
-                                    "El programa será eliminado y cualquier equipo de cómputo que se encuentre con la "
-                                            + "aplicación registrada será eliminada ¿Desea continuar con la acción?");
+                            boolean confirmarEliminacion = Utilidades.mostrarDialogoConfirmacion("Confirmación de eliminación de Centro de cómputo", 
+                                    "El centro de cómputo será eliminado con todos los equipos de cómputo, ¿desea continuar?");
                             if (confirmarEliminacion){
                                 if(CentroComputoDAO.eliminarCC(seleccion.getIdCentroComputo())){
                                     Utilidades.mostrarAlertaSimple("Éxito en la operación", 
-                                            "Aplicación eliminado de manera exitosa", 
+                                            "Centro de cómputo eliminado de manera exitosa", 
                                             Alert.AlertType.INFORMATION);
                                     cargarDatosTabla();
                                 }else{
-                                    Utilidades.mostrarAlertaSimple("Error en la eliminación del programa", 
-                                            "Hubo un error al momento de eliminar la aplicación, por favor vuelva a intentarlo más tarde", 
+                                    Utilidades.mostrarAlertaSimple("Error en la eliminación del Centro de cómputo", 
+                                            "Hubo un error al momento de eliminar el Centro de Cómputo, por favor vuelva a intentarlo más tarde", 
                                             Alert.AlertType.ERROR);
                                 }
                             }

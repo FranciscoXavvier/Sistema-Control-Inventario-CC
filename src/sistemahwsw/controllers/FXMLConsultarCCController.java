@@ -13,11 +13,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import modelo.dao.CentroComputoDAO;
@@ -44,7 +46,11 @@ public class FXMLConsultarCCController implements Initializable {
         ArrayList<CentroComputo> listaCC = CentroComputoDAO.obtenerCentroComputo();
         for (CentroComputo cc: listaCC){
             Button btn = new Button(cc.toString());
-            hBoxCC.getChildren().add(btn);
+            StackPane pane = new StackPane();
+            pane.setMinSize(100, 100);
+            pane.setPadding(new Insets(15));
+            pane.getChildren().add(btn);
+            hBoxCC.getChildren().add(pane);
             btn.setOnAction((ActionEvent) -> {
                 irAConsultaCC(cc.getIdCentroComputo());
             });

@@ -25,7 +25,7 @@ public class PerifericoDAO {
     public static ArrayList<TipoPeriferico> recuperarTipoDePerifericos(){
         ArrayList<TipoPeriferico> tiposDePerifericos= new ArrayList<>();
         try(Connection conexion = conexionBD.abrirConexionBD()){
-            String consulta = "SELECT * FROM tipo_periferico";
+            String consulta = "SELECT * FROM Tipo_Periferico";
             PreparedStatement consultaPreparada = conexion.prepareStatement(consulta);
             ResultSet resultadoConsulta = consultaPreparada.executeQuery();
             while (resultadoConsulta.next()){
@@ -45,20 +45,20 @@ public class PerifericoDAO {
     public static ArrayList<Periferico> recuperarPerifericosPorIDEC(int idEc){
         ArrayList <Periferico> perifericosRecuperados = new ArrayList<>();
         try ( Connection conexion = conexionBD.abrirConexionBD()) {
-            String consulta = "SELECT periferico.idPeriferico, "
-                    + "periferico.marca, \n"
-                    + "	periferico.modelo, \n"
-                    + "	periferico.codigo_de_barras,\n"
-                    + "	tipo_periferico.idTipo_Periferico,\n"
-                    + "	tipo_periferico.tipo_periferico \n"
+            String consulta = "SELECT Periferico.idPeriferico, "
+                    + "Periferico.marca, \n"
+                    + "	Periferico.modelo, \n"
+                    + "	Periferico.codigo_de_barras,\n"
+                    + "	Tipo_Periferico.idTipo_Periferico,\n"
+                    + "	Tipo_Periferico.tipo_periferico \n"
                     + "	FROM \n"
-                    + "		`periferico` \n"
+                    + "		`Periferico` \n"
                     + "	INNER JOIN \n"
-                    + "		tipo_periferico \n"
+                    + "		Tipo_Periferico \n"
                     + "	ON \n"
-                    + "		periferico.Tipo_Periferico_idTipo_Periferico = tipo_periferico.idTipo_Periferico \n"
+                    + "		Periferico.Tipo_Periferico_idTipo_Periferico = Tipo_Periferico.idTipo_Periferico \n"
                     + "	WHERE \n"
-                    + "		periferico.Equipo_Computo_idEquipo_Computo = ?";
+                    + "		Periferico.Equipo_Computo_idEquipo_Computo = ?";
             PreparedStatement consultaPreparada = conexion.prepareStatement(consulta);
             consultaPreparada.setInt(1, idEc);
             ResultSet resultadoConsulta = consultaPreparada.executeQuery();
@@ -113,7 +113,7 @@ public class PerifericoDAO {
     public static boolean editarPeriferico(Periferico nuevoPeriferico, Periferico perifericoAEditar){
         boolean seEdito = false;
         try(Connection conexion = conexionBD.abrirConexionBD()){
-            String consulta = "UPDATE periferico SET Tipo_Periferico_idTipo_Periferico = ?, "
+            String consulta = "UPDATE Periferico SET Tipo_Periferico_idTipo_Periferico = ?, "
                     + "marca = ?, modelo = ?, codigo_de_barras = ? WHERE idPeriferico = ?";
             PreparedStatement consultaPreparada = conexion.prepareStatement(consulta);
             consultaPreparada.setInt(1, nuevoPeriferico.getTipo().getIdTipoPeriferico());
@@ -136,7 +136,7 @@ public class PerifericoDAO {
     public static boolean eliminarPerifericoPorId(int idPeriferico) {
         boolean seElimino = false;
         try(Connection conexion = conexionBD.abrirConexionBD()){
-            String consulta = "DELETE FROM periferico WHERE idPeriferico = ?" ;
+            String consulta = "DELETE FROM Periferico WHERE idPeriferico = ?" ;
             PreparedStatement consultaPreparada = conexion.prepareStatement(consulta);
             consultaPreparada.setInt(1, idPeriferico);
             int filasAfectadas = consultaPreparada.executeUpdate();

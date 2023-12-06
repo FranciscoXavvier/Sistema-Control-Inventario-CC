@@ -305,16 +305,16 @@ public class FXMLRegistrarEquipoComputoController implements Initializable {
     }
 
     public void limitarTexto() {
-        listenerLimitarTexto(tf_fila);
-        listenerLimitarTexto(tf_columna);
+        listenerLimitarTexto(tf_fila, 1);
+        listenerLimitarTexto(tf_columna, 2);
     }
 
-    private void listenerLimitarTexto(TextField tf) {
+    private void listenerLimitarTexto(TextField tf, int longitudMaxima) {
         tf.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
                 if (tf.getText().length() > 1) {
-                    String s = tf.getText().substring(0, 1);
+                    String s = tf.getText().substring(0, longitudMaxima);
                     tf.setText(s);
                 }
             }

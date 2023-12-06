@@ -52,7 +52,7 @@ public class FXMLEditarTecnicoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        tf_nombre.setEditable(false);
     }
 
     @FXML

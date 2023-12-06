@@ -72,7 +72,7 @@ public class CentroComputoDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try{
-                String consulta = "DELETE FROM centro_computo WHERE idCentro_Computo = ?";
+                String consulta = "DELETE FROM Centro_Computo WHERE idCentro_Computo = ?";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setInt(1, idCC);
                 int filasAfectadas = sentenciaPreparada.executeUpdate();
@@ -94,7 +94,7 @@ public class CentroComputoDAO {
         Connection conexionBD = conexion.abrirConexionBD();
         if(conexionBD != null){
             try{
-                String consulta = "UPDATE centro_computo SET nombre_centro_computo = ?"
+                String consulta = "UPDATE Centro_Computo SET nombre_centro_computo = ?"
                         + "WHERE idCentro_Computo = ?";
                 PreparedStatement sentenciaPreparada = conexionBD.prepareStatement(consulta);
                 sentenciaPreparada.setString(1, nombreCC);

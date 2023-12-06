@@ -13,13 +13,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import modelo.dao.CentroComputoDAO;
+import modelo.dao.EquipoComputoDAO;
 import sistemahwsw.pojo.CentroComputo;
+import sistemahwsw.pojo.EquipoComputo;
 import sistemahwsw.pojo.Tecnico;
 import sistemahwsw.utilidades.Utilidades;
 
@@ -41,6 +47,8 @@ public class MenuPrincipalController implements Initializable {
     
      @FXML
     private Label lbl_bienvenido;
+    @FXML
+    private VBox vBoxComputadoras;
         
     
     public void parametros(String username, LoginController lc){
@@ -57,9 +65,10 @@ public class MenuPrincipalController implements Initializable {
     
      @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        actualizarEC();
     }    
     
+    @FXML
     public void usuario(ActionEvent event){
         try{
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -98,6 +107,7 @@ public class MenuPrincipalController implements Initializable {
     private void clicRegresar(ActionEvent event) {
         Utilidades.cambiarVentana("Inicio de sesión", (Node) event.getSource(), "/sistemahwsw/vistas/FXMLLogin.fxml");
     }
+    
     @FXML
     public void centro_computo(ActionEvent event){
         try{
@@ -142,6 +152,23 @@ public class MenuPrincipalController implements Initializable {
             e.printStackTrace();
         }   
     }
-    
+    private void actualizarEC() {
+        ArrayList<CentroComputo> ccRespuestaBD = CentroComputoDAO.obtenerCentroComputo();
+        ScrollBar sc = new ScrollBar();
+        vBoxComputadoras.getChildren().add(sc);
+        for (CentroComputo cc : ccRespuestaBD) {
+            Label lbCC = new Label("El " + cc.toString() + " cuenta con los equipos de cómputo");
+            lbCC.paddingProperty().set(new Insets(5));
+            vBoxComputadoras.getChildren().add(lbCC);
+            ArrayList<EquipoComputo> ecRespuestaBD = EquipoComputoDAO.getEquiposDeComputoPorIdCC(cc.getIdCentroComputo());
+            for (EquipoComputo ec : ecRespuestaBD) {
+                Label lbEc = new Label("- Equipo de cómputo " + ec.getIdEquipo() + "\n\t Procesador: " + ec.getProcesador()
+                        + "\n\t Memoria RAM: " + ec.getMemoriaRam()
+                        + "\n\t Almacenamiento: " + ec.getAlmacenamiento());
+                lbEc.paddingProperty().set(new Insets(7));
+                vBoxComputadoras.getChildren().add(lbEc);
+            }
+        }
+    }
 }
        

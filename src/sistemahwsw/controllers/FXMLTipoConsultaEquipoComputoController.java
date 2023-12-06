@@ -74,6 +74,8 @@ public class FXMLTipoConsultaEquipoComputoController implements Initializable {
             
             controlador.configurarTabla();
             controlador.cargarDatosTabla();
+            controlador.marcarAplicacionesInstaladas();
+            controlador.cambiarListenerCheckBox();
         }catch(IOException ex){
             ex.printStackTrace();
         }
